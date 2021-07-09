@@ -1,8 +1,13 @@
-<%= form_with model:@member local:true do |f| %>
+<%= form_with model:@member, local:true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   
   <%= f.label :introduction %>
   <%= f.text_area :introduction %>
+  
+  <%= f.label :member_image %>
+  <%= f.attachment_field :member_image %>
+  
+  <%= f.submit %>
   
 <% end %>

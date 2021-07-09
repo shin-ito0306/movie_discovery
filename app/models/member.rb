@@ -4,5 +4,5 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  attachment :mamber_image
+  attachment :member_image
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_135139) do
+ActiveRecord::Schema.define(version: 2021_07_09_074802) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "member_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_135139) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.string "member_image"
+    t.string "member_image_id"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,1 +1,4 @@
 <%= @member.name %>
+<%= @member.introduction %>
+<%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg' %>
+<%= link_to "会員情報編集", edit_member_path(current_member.id) %>

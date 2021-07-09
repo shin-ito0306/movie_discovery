@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  movie_name: MyString
+  movie_image: MyString
+  movie_number: 1
+
+two:
+  member: two
+  movie_name: MyString
+  movie_image: MyString
+  movie_number: 1

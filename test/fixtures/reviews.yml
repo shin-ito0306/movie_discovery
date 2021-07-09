@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  movie_name: MyString
+  movie_number: 1
+  movie_image: MyString
+  evaluation: 1.5
+  review_detail: MyText
+
+two:
+  member: two
+  movie_name: MyString
+  movie_number: 1
+  movie_image: MyString
+  evaluation: 1.5
+  review_detail: MyText

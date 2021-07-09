@@ -6,9 +6,14 @@ class Member < ApplicationRecord
          
   attachment :member_image
   
-  has_many :reverse_of_rerationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
-  has_many :followers, through: :reverse_of_rerationships, sourece: :follower
+  #フォローしている側
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :follower_members, through: :reverse_of_relationships, source: :follower
   
-  has_many :rerationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destory
-  has_many :followed, through: :rerationships, sourece: :followed
+  #フォローされている側
+  has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followed_members, through: :relationships, source: :followed
+  def following?(member)
+    followed_members.include?(member)
+  end
 end

@@ -4,6 +4,11 @@
 <%= @member.introduction %><br>
 <h4>プロフィール画像</h4>
 <%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg' %>
+<% if current_member.following?(@member) %>
+  <%= link_to 'フォローをはずす', member_relationships_path(@member.id), method: :delete %>
+<% else %>
+  <%= link_to 'フォローする', member_relationships_path(@member.id), method: :post %>
+<% end %>
 <% if @member.id == current_member.id %>
   <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
 <% end %>

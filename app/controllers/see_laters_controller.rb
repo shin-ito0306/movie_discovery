@@ -1,0 +1,2 @@
+class SeeLatersController < ApplicationController
+end

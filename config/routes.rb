@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :members do
     resource :relationships, only: [:create, :destroy]
   end
+  resources :reviews
 end

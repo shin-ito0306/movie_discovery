@@ -16,8 +16,8 @@
   <%= link_to "後で見る" %>
 </li>
 <li>
-  <%= link_to "フォロー一覧" %>
+  <%= link_to "フォロー一覧", member_follower_path(@member.id) %>
 </li>
 <li>
-  <%= link_to "フォロワー一覧" %>
+  <%= link_to "フォロワー一覧", member_followed_path(@member.id) %>
 </li>

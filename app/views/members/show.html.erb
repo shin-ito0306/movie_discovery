@@ -1,0 +1,18 @@
+<h4>名前</h4>
+<%= @member.name %><br>
+<h4>紹介文</h4>
+<%= @member.introduction %><br>
+<h4>プロフィール画像</h4>
+<%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg' %>
+<% if @member.id == current_member.id %>
+  <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
+<% end %>
+<li>
+  <%= link_to "後で見る" %>
+</li>
+<li>
+  <%= link_to "フォロー一覧" %>
+</li>
+<li>
+  <%= link_to "フォロワー一覧" %>
+</li>

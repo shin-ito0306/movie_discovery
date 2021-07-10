@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
   Tmdb::Api.language("ja")
   
   def index
-    @a = JSON.parse((Tmdb::Search.movie("Harry")).to_json)
-    @b = JSON.pretty_generate(@a)
+    @moviedata = JSON.parse((Tmdb::Search.movie("Harry")).to_json)
   end
 end

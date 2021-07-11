@@ -4,12 +4,10 @@ class MoviesController < ApplicationController
   Tmdb::Api.language("ja")
   
   def index
-    
     @movies = Tmdb::Movie.popular
-    
-    #取ってきた値から作品1つずつのtitle,idを二次元配列にする
-    
-    
-    
+  end
+  
+  def show
+    @movie = Tmdb::Movie.detail(params[:id])
   end
 end

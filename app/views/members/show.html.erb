@@ -21,3 +21,6 @@
 <li>
   <%= link_to "フォロワー一覧", member_followed_path(@member.id) %>
 </li>
+<li>
+  <%= link_to "後で見る一覧", member_see_laters_path(member_id: @member.id) %>
+</li>

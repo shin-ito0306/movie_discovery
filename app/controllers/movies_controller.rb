@@ -4,18 +4,12 @@ class MoviesController < ApplicationController
   Tmdb::Api.language("ja")
   
   def index
-    @moviedata = JSON.parse((Tmdb::Discover.movie).to_json)
-    #@a = JSON.parse(Tmdb::Movie.detail((@moviedata['table']['results'][0]['table']['id']).to_i).to_json)
+    
+    @movies = Tmdb::Movie.popular
     
     #取ってきた値から作品1つずつのtitle,idを二次元配列にする
-    @movies = Array.new
-    a = 0
-    while (a < 9) do
-      movie_detail = Array.new
-      movie_detail << @moviedata['table']['results'][a]['table']['title']
-      movie_detail << @moviedata['table']['results'][a]['table']['id']
-      @movies << movie_detail
-      a += 1
-    end
+    
+    
+    
   end
 end

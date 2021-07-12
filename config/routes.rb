@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     get 'follower' => 'relationships#follower'
     get 'followed' => 'relationships#followed'
   end
-  resources :reviews
+  resources :movies
 end

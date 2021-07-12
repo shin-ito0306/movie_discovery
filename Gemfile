@@ -66,3 +66,4 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'themoviedb-api', '~> 1.3'
+gem 'dotenv-rails'

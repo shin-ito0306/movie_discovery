@@ -5,6 +5,10 @@ class ReviewsController < ApplicationController
     @reviews = Review.where(member_id: current_member.followed_members)
   end
   
+  def show
+    @review = Review.find(params[:id])
+  end
+  
   def new
     @review = Review.new
     @movie = Tmdb::Movie.detail(params[:movie_number])

@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   devise_for :members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :members do
+    get 'see_laters' => 'see_laters#index'
+    resource :see_laters, only: [:create, :destroy]
     resource :relationships, only: [:create, :destroy]
     get 'follower' => 'relationships#follower'
     get 'followed' => 'relationships#followed'
   end
-  resources :movies
+  resources :movies, only: [:index, :show]
 end

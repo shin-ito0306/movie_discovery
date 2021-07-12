@@ -1,0 +1,6 @@
+<h2>レビュー詳細</h2>
+<%= @review.movie_name %>
+<%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %><br>
+<%= @review.review_detail %>
+
+<%= link_to '作品の詳細', movie_path(@review.movie_number) %>

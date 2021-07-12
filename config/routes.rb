@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     get 'followed' => 'relationships#followed'
   end
   resources :movies, only: [:index, :show]
+  resources :reviews
 end

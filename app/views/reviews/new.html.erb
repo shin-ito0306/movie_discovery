@@ -1,0 +1,17 @@
+<%= form_with model:@review, local:true do |f| %>
+  <%= f.label :movie_name %>
+  <%= @movie['title'] %>
+  <%= f.hidden_field :movie_name, value: @movie['title'] %>
+  
+  <%= f.label :movie_image %>
+  <%= image_tag 'https://image.tmdb.org/t/p/w300' + @movie['poster_path'] %>
+  <%= f.hidden_field :movie_image, value: @movie['poster_path'] %>
+  
+  <%= f.label :review_detail %>
+  <%= f.text_area :review_detail %>
+  
+  <%= f.hidden_field :movie_number, value: @movie['id'] %>
+  
+  <%= f.submit %>
+  
+<% end %>

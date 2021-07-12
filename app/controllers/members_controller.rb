@@ -2,6 +2,7 @@ class MembersController < ApplicationController
   
   def show
     @member = Member.find(params[:id])
+    @reviews = Review.where(member_id: params[:id])
   end
   
   def edit

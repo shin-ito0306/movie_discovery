@@ -1,0 +1,13 @@
+<%= form_with model:@review, local:true do |f| %>
+  <%= f.label :movie_name %>
+  <%= @review.movie_name %>
+  
+  <%= f.label :movie_image %>
+  <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %>
+  
+  <%= f.label :review_detail %>
+  <%= f.text_area :review_detail %>
+  
+  <%= f.submit %>
+  
+<% end %>

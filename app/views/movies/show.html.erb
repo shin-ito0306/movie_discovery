@@ -3,3 +3,4 @@
 <%= @movie['overview'] %>
 <%= @movie['id'] %>
 <%= link_to '後で見るに追加', member_see_laters_path(member_id: current_member.id, movie_number: @movie['id']), method: :post, data: { confirm: "本当に追加しますか?" } %>
+<%= link_to 'レビューを書く', new_review_path(movie_number: @movie['id']) %>

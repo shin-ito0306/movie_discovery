@@ -38,5 +38,16 @@
     <%= link_to '編集', edit_review_path(review.id) %>
     <%= link_to '削除', review_path(review.id), method: :delete, data: { confirm: "本当に削除しますか?" } %>
   <% end %>
+  <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
+  <script>
+  $('#review-evaluation<%= review.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    readOnly: true,
+    score: <%= review.evaluation %>,
+  });
+</script>
 <% end %>
 

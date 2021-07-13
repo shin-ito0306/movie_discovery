@@ -67,3 +67,5 @@ gem "refile-mini_magick"
 
 gem 'themoviedb-api', '~> 1.3'
 gem 'dotenv-rails'
+
+gem 'jquery-rails'

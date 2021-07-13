@@ -7,6 +7,10 @@
   <%= image_tag 'https://image.tmdb.org/t/p/w300' + @movie['poster_path'] %>
   <%= f.hidden_field :movie_image, value: @movie['poster_path'] %>
   
+  <div id="evalute_star">
+    <label>評価</label>
+  </div>
+  
   <%= f.label :review_detail %>
   <%= f.text_area :review_detail %>
   
@@ -15,3 +19,11 @@
   <%= f.submit %>
   
 <% end %>
+<script>
+  $('#evalute_star').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'review[evaluation]'
+  })
+</script>

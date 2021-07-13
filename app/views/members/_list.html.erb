@@ -1,0 +1,8 @@
+<% members.each do |member| %>
+  <h4>名前</h4>
+  <%= member.name %><br>
+  <h4>紹介文</h4>
+  <%= member.introduction %><br>
+  <h4>プロフィール画像</h4>
+  <%= attachment_image_tag member, :member_image, :fill, 100, 100, format: 'jpeg' %>
+<% end %>

@@ -1,12 +1,9 @@
-<!--既存のページに検索結果を表示させたい! indexと部分テンプレート-->
- 
- 
-<%# @members.each do |member| %>
-  <%#= member.name %>
-<%# end %>
-<%= flash[:notice] %>
-
-
-<% @movies.results.each do |movie| %>
-  <%= movie['title'] %>
+<% if @kind == "会員" %>
+  <%= render 'members/list', members: @members %>
+<% elsif @kind == '作品' || @kind == 'ジャンル' %>
+  <%= render 'movies/list', movies: @movies %>
 <% end %>
+
+
+
+

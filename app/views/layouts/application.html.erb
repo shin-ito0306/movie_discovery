@@ -28,8 +28,10 @@
         <%= link_to "ログイン", new_member_session_path %>
       </li>
     <% end %>
+    <%= @genre_kind %>
     <%= form_with url:search_path, method: :get, local:true do |f| %>
-      <%= f.select :kind, options_for_select([['member'], ['movie']]) %>
+      <%= f.select :kind, options_for_select([['member'], ['movie'], ['ジャンル']]) %>
+      <%= f.select :genre, options_for_select(genre_search) %>
       <%= f.text_field :word %>
       <%= f.submit '検索' %>
     <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   root :to => "homes#top"
   devise_for :members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :movies, only: [:index, :show]
   resources :reviews
+  get 'search' => 'searches#search'
 end

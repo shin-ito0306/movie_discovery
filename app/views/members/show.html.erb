@@ -26,7 +26,7 @@
 </li>
 
 
-<!--そのmembeの投稿-->
+<!--そのmemberの投稿-->
 <h2>レビュー一覧</h2>
 <% @reviews.each do |review| %>
   <%= link_to review_path(review.id) do %>
@@ -39,6 +39,7 @@
     <%= link_to '削除', review_path(review.id), method: :delete, data: { confirm: "本当に削除しますか?" } %>
   <% end %>
   <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
+  
   <script>
   $('#review-evaluation<%= review.id %>').raty({
     size: 36,

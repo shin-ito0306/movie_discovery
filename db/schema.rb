@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_014839) do
+ActiveRecord::Schema.define(version: 2021_07_13_073943) do
+
+  create_table "genres", force: :cascade do |t|
+    t.integer "genre_number"
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "member_id"

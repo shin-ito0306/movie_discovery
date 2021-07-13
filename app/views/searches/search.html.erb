@@ -1,0 +1,9 @@
+<% if @kind == "会員" %>
+  <%= render 'members/list', members: @members %>
+<% elsif @kind == '作品' || @kind == 'ジャンル' %>
+  <%= render 'movies/list', movies: @movies %>
+<% end %>
+
+
+
+

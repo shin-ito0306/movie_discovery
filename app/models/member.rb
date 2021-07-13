@@ -16,4 +16,8 @@ class Member < ApplicationRecord
   def following?(member)
     followed_members.include?(member)
   end
+  
+  def self.finder(words)
+    return Member.where("name LIKE ?", "%#{words}%")
+  end
 end

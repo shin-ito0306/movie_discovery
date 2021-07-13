@@ -28,6 +28,12 @@
         <%= link_to "ログイン", new_member_session_path %>
       </li>
     <% end %>
+    <%= form_with url:search_path, method: :get, local:true do |f| %>
+      <%= f.select :kind, options_for_select([['member'], ['movie']]) %>
+      <%= f.text_field :word %>
+      <%= f.submit '検索' %>
+    <% end %>
+    <%#= render 'searches/search' %>
     <%= yield %>
   </body>
 </html>

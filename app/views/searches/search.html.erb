@@ -1,2 +1,12 @@
-<h1>Searches#search</h1>
-<p>Find me in app/views/searches/search.html.erb</p>
+<!--既存のページに検索結果を表示させたい! indexと部分テンプレート-->
+ 
+ 
+<%# @members.each do |member| %>
+  <%#= member.name %>
+<%# end %>
+
+
+
+<% @movies.results.each do |movie| %>
+  <%= movie['title'] %>
+<% end %>

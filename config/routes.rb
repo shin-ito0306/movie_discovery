@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'withdrawal' => 'homes#withdrawal'
   get 'searches/search' => 'searches#search'
   root :to => "homes#top"
-  devise_for :members
+  devise_for :members, controllers: {
+    passwords: 'members/passwords',
+    registrations: 'members/registrations',
+    sessions: 'members/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :members do
     get 'see_laters' => 'see_laters#index'

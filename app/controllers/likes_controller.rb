@@ -3,7 +3,9 @@ class LikesController < ApplicationController
   def create
     review = Review.find(params[:review_id])
     like = current_member.likes.new(review_id: review.id)
-    like.save
+    if like.save
+      review.create_notification_like(current_member, review.id, review.member_id)
+    end
     redirect_to review_path(review.id)
   end
   

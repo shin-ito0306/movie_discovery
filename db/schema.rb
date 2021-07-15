@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_15_025038) do
+ActiveRecord::Schema.define(version: 2021_07_15_081335) do
 
   create_table "genres", force: :cascade do |t|
     t.integer "genre_number"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_025038) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visiter_id"
     t.integer "visited_id"
-    t.integer "like_id"
+    t.integer "review_id"
     t.string "action"
     t.boolean "check"
     t.datetime "created_at", null: false

@@ -15,6 +15,14 @@ class Member < ApplicationRecord
   #呼び出し元にフォローされている側
   has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followed_members, through: :relationships, source: :followed
+  
+  #通知をもらう側
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  
+  #通知をする側
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  
+  
   def following?(member)
     followed_members.include?(member)
   end

@@ -4,13 +4,13 @@
       <%= attachment_image_tag notification.visiter, :member_image, :fill, 100, 100, format: 'jpeg' %>
     <% end %>
     <% case notification.action %>
-      <% when 'like' %>
-        <%= link_to "#{notification.visiter}がいいねを押しました", review_path(notification.review_id) %>
-      <% when 'follow' %>
-        <%= link_to "#{notification.visiter}にフォローされました", member_path(notification.visiter_id) %>
+      <% when 'like' then %>
+        <%= link_to "#{notification.visiter.name}がいいねを押しました", review_path(notification.review_id) %>
+      <% when 'follow' then %>
+        <%= link_to "#{notification.visiter.name}にフォローされました", member_path(notification.visiter_id) %>
     <% end %>
   <% end %>
-  <% end %>
+<% end %>
   
       
     

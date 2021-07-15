@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_073943) do
+ActiveRecord::Schema.define(version: 2021_07_15_025038) do
 
   create_table "genres", force: :cascade do |t|
     t.integer "genre_number"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_073943) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "withdrawal_status", default: false, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

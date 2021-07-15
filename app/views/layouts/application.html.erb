@@ -28,7 +28,7 @@
         <%= link_to "ログイン", new_member_session_path %>
       </li>
     <% end %>
-    <%= form_with url:search_path, method: :get, local:true do |f| %>
+    <%= form_with url:searches_search_path, method: :get, local:true do |f| %>
       <%= f.select :kind, options_for_select([['会員'], ['作品'], ['ジャンル']]), :prompt => "検索の種類" %>
       <%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択(ジャンル検索時)" %>
       <%= f.text_field :word, :placeholder => "タイトルを入力" %>

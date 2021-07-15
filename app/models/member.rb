@@ -6,6 +6,8 @@ class Member < ApplicationRecord
          
   attachment :member_image
   
+  has_many :likes, dependent: :destroy
+  
   #呼び出し元をフォローしている側,followed_id=>フォロ-されているMemeberのID,follower_id=>フォロ-をしているMemberのID
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :follower_members, through: :reverse_of_relationships, source: :follower

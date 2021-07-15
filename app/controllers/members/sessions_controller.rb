@@ -6,9 +6,9 @@ class Members::SessionsController < Devise::SessionsController
   
   
   def reject_members
-    @member = Member.find_by(email: params[:email])
+    @member = Member.find_by(email: params[:member][:email])
     if @member
-      if @member.valid_password?(params[:password]) && @member.withdrawal_status == true
+      if @member.valid_password?(params[:member][:password]) && @member.withdrawal_status == true
         redirect_to new_member_session_path
       end
     end

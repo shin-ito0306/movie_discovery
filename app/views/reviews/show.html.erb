@@ -1,5 +1,14 @@
 <h2>レビュー詳細</h2>
 <%= @review.movie_name %>
+<% if @review.liked_by?(current_member) %>
+  <%= link_to review_likes_path(@review.id), method: :delete do %>
+    <i class="fas fa-heart"></i><%= @review.likes.count %>
+  <% end %>
+<% else %>
+  <%= link_to review_likes_path(@review.id), method: :post do %>
+    <i class="far fa-heart"></i><%= @review.likes.count %>
+  <% end %>
+<% end %>
 <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %><br>
 <%= @review.review_detail %>
 

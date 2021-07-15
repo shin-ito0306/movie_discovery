@@ -3,6 +3,6 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   
   def liked_by?(member)
-    likes.where(member_id: member.id).exists
+    likes.where(member_id: member.id).exists?
   end
 end

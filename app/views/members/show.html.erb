@@ -3,7 +3,7 @@
 <h4>紹介文</h4>
 <%= @member.introduction %><br>
 <h4>プロフィール画像</h4>
-<%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg' %>
+<%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png" %>
 <% if current_member.following?(@member) %>
   <%= link_to 'フォローをはずす', member_relationships_path(@member.id), method: :delete %>
 <% else %>

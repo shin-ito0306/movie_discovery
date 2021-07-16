@@ -1,6 +1,6 @@
 <h2>レビュー詳細</h2>
 <%= @review.movie_name %>
-<div id="like_button_<%= @review.id %>">
+<div id="like_button">
   <%= render 'likes/like', review: @review %>
 </div>
 <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %><br>

@@ -1,9 +1,9 @@
-<% if review.liked_by?(current_member) %>
-  <%= link_to review_likes_path(review.id), method: :delete, remote: true do %>
-    <i class="fas fa-heart" style="color: blue;"></i><%= review.likes.count %>
+<% if review.likes.where(member_id: current_member.id).exists? %>
+  <%= link_to review_likes_path(review_id: review.id), method: :delete, remote:true do %>
+    <i class="fas fa-heart" style="color: red;"></i><%= review.likes.count %>
   <% end %>
 <% else %>
-  <%= link_to review_likes_path(review.id), method: :post, remote: true do %>
-    <i class="far fa-heart" style="color: blue;"></i><%= review.likes.count %>
+  <%= link_to review_likes_path(review_id:review.id), method: :post, remote:true do %>
+    <i class="far fa-heart" style="color: red;"></i><%= review.likes.count %>
   <% end %>
 <% end %>

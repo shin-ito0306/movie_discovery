@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   has_many :notifications, dependent: :destroy
   
   def liked_by?(member)
-    likes.where(member_id: member.id).exists?
+    likes.where(member_id: member).exists?
   end
   
   #いいね通知のメソッド

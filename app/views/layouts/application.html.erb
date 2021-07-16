@@ -20,6 +20,12 @@
       <li>
         <%= link_to "作品一覧", movies_path %>
       </li>
+      <li>
+        <%= link_to "通知", notifications_index_path %>
+        <% if uncheck_notifications.any? %>
+          <i class="fas fa-circle"></i>
+        <% end %>
+      </li>
     <% else %>
       <li>
         <%= link_to "新規登録", new_member_registration_path %>

@@ -1,16 +1,15 @@
 class RelationshipsController < ApplicationController
   
   def create
-    member = Member.find(params[:member_id])
+    @member_followed = Member.find(params[:member_id])
     current_member.relationships.create(followed_id: params[:member_id])
-    member.create_notification_follow(current_member, member.id)
-    redirect_back(fallback_location: root_path)
+    @member_followed.create_notification_follow(current_member, @member_followed.id)
+    
   end
   
   def destroy
-    follower = current_member.relationships.find_by(followed_id: params[:member_id])
-    follower.destroy
-    redirect_back(fallback_location: root_path)
+    @member_followed = current_member.relationships.find_by(followed_id: params[:member_id])
+    @member_followed.destroy
   end
   
   #呼び出し元がフォローしている側

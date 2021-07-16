@@ -5,12 +5,9 @@
     <% end %>
     <% case notification.action %>
       <% when 'like' then %>
-        <%= link_to "#{notification.visiter.name}がいいねを押しました", review_path(notification.review_id) %>
+        <%= link_to "#{notification.visiter.name}があなたのレビューをいいねしまいした", review_path(notification.review_id) %>
       <% when 'follow' then %>
         <%= link_to "#{notification.visiter.name}にフォローされました", member_path(notification.visiter_id) %>
     <% end %>
   <% end %>
 <% end %>
-  
-      
-    

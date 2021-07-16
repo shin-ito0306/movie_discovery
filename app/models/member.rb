@@ -32,7 +32,7 @@ class Member < ApplicationRecord
   end
   
   def create_notification_follow(current_member, visited)
-    follow_search = Notification.where(visiter_id: current_member.id, review_id: review, visited_id: visited, action: 'like')
+    follow_search = Notification.where(visiter_id: current_member.id, visited_id: visited, action: 'follow')
     if follow_search.blank?
       notification = current_member.passive_notifications.new(visited_id: visited, action: 'follow')
       notification.save if notification.valid?

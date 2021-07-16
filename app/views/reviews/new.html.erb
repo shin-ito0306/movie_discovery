@@ -1,10 +1,5 @@
 <!--validatesでrenderされた時に@movieでエラーになる-->
-<% if @review.errors.any? %>
-  <%= @review.errors.count %>件のエラーが発生しました
-  <%= @review.errors.full_messages.each do |message| %>
-    <%= message %><br>
-  <% end %>
-<% end %>
+<%= render 'layouts/error_message', object: @review %>
 <%= form_with model:@review, local:true do |f| %>
   <%= f.label :movie_name %>
   <%= @movie['title'] %>

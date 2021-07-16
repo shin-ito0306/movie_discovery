@@ -1,0 +1,5 @@
+<h2><%= @member.name %>様　本当に退会しますか？</h2>
+<p>退会するには退会するボタンを押してください</p>
+
+<%= link_to '退会しない', member_path(@member.id) %>
+<%= link_to '退会', withdrawal_path %>

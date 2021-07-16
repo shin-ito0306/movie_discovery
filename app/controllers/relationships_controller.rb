@@ -1,7 +1,9 @@
 class RelationshipsController < ApplicationController
   
   def create
+    member = Member.find(params[:member_id])
     current_member.relationships.create(followed_id: params[:member_id])
+    member.create_notification_follow(current_member, member.id)
     redirect_back(fallback_location: root_path)
   end
   

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get 'searches/search'
+  get 'notifications/index'
+  get 'unsubscribe' => 'homes#unsubscribe'
+  get 'withdrawal' => 'homes#withdrawal'
+  get 'searches/search' => 'searches#search'
   root :to => "homes#top"
-  devise_for :members
+  devise_for :members, controllers: {
+    passwords: 'members/passwords',
+    registrations: 'members/registrations',
+    sessions: 'members/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :members do
     get 'see_laters' => 'see_laters#index'
@@ -11,6 +18,7 @@ Rails.application.routes.draw do
     get 'followed' => 'relationships#followed'
   end
   resources :movies, only: [:index, :show]
-  resources :reviews
-  get 'search' => 'searches#search'
+  resources :reviews do
+    resource :likes, only: [:create, :destroy]
+  end
 end

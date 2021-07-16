@@ -69,3 +69,5 @@ gem 'themoviedb-api', '~> 1.3'
 gem 'dotenv-rails'
 
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.5'
+gem 'font-awesome-sass', '~> 5.13'

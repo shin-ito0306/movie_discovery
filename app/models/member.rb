@@ -4,6 +4,10 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  validates :name, presence: true
+  validates :withdrawal_status, inclusion: { in: [true, false] }
+  
+  
   attachment :member_image
   
   has_many :likes, dependent: :destroy

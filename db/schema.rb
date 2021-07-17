@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_15_105408) do
+ActiveRecord::Schema.define(version: 2021_07_17_015642) do
 
   create_table "genres", force: :cascade do |t|
     t.integer "genre_number"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_105408) do
     t.string "movie_name"
     t.integer "movie_number"
     t.string "movie_image"
-    t.float "evaluation"
+    t.float "evaluation", default: 0.0
     t.text "review_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

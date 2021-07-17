@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   has_many :notifications, dependent: :destroy
   
   validates :review_detail, presence: true
+  validates :evaluation, numericality: { less_than_or_equal_to: 5, greater_than_or_equal_to: 1 }, presence: true
   
   def liked_by?(member)
     likes.where(member_id: member).exists?

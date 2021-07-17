@@ -1,14 +1,8 @@
-<%= image_tag 'https://image.tmdb.org/t/p/w300' + @movie['poster_path'] %><br>
-<%= @movie['title'] %>
-<%= @movie['overview'] %>
-<%= @movie['id'] %>
-<%= link_to '後で見るに追加', member_see_laters_path(member_id: current_member.id, movie_number: @movie['id']), method: :post, data: { confirm: "本当に追加しますか?" } %>
-<%= link_to 'レビューを書く', new_review_path(movie_number: @movie['id']) %>
-
 <% @reviews.each do |review| %>
   <%= link_to review_path(review.id) do %>
+    <%= review.movie_name %><br>
+    <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image %><br>
     <%= review.review_detail %>
-    <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
   <% end %>
   <%= link_to member_path(review.member.id) do %>
     <%= review.member.name %>
@@ -17,7 +11,7 @@
   <div id="like_button">
     <%= render 'likes/like', review: review %>
   </div>
-  
+  <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
   <script>
     $('#review-evaluation<%= review.id %>').raty({
       size: 36,

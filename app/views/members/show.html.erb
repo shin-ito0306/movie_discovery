@@ -26,27 +26,7 @@
 
 <!--そのmemberの投稿-->
 <h2>レビュー一覧</h2>
-<% @reviews.each do |review| %>
-  <%= link_to review_path(review.id) do %>
-    <%= review.movie_name %><br>
-    <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image %><br>
-    <%= review.review_detail %>
-  <% end %>
-  <% if @member.id == current_member.id %>
-    <%= link_to '編集', edit_review_path(review.id) %>
-    <%= link_to '削除', review_path(review.id), method: :delete, data: { confirm: "本当に削除しますか?" } %>
-  <% end %>
-  <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
+<%= render 'reviews/reviews', reviews: @reviews %>
+
   
-  <script>
-  $('#review-evaluation<%= review.id %>').raty({
-    size: 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    readOnly: true,
-    score: <%= review.evaluation %>,
-  });
-</script>
-<% end %>
 

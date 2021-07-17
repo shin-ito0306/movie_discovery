@@ -26,6 +26,9 @@
           <i class="fas fa-circle"></i>
         <% end %>
       </li>
+      <li>
+        <%= link_to 'フォロー中のレビュー', reviews_path %>
+      </li>
     <% else %>
       <li>
         <%= link_to "新規登録", new_member_registration_path %>

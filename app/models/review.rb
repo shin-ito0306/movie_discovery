@@ -3,6 +3,8 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
   
+  validates :review_detail, presence: true
+  
   def liked_by?(member)
     likes.where(member_id: member).exists?
   end

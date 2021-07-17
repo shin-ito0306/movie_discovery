@@ -1,3 +1,5 @@
+<!--validatesでrenderされた時に@movieでエラーになる-->
+<%= render 'layouts/error_message', object: @review %>
 <%= form_with model:@review, local:true do |f| %>
   <%= f.label :movie_name %>
   <%= @movie['title'] %>

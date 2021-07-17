@@ -40,6 +40,11 @@
       <%= f.text_field :word, :placeholder => "タイトルを入力" %>
       <%= f.submit '検索' %>
     <% end %>
+    <span class="Notification">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: key %>
+      <% end %>
+    </span>
     <%= yield %>
   </body>
 </html>

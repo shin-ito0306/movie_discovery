@@ -9,5 +9,6 @@ class MoviesController < ApplicationController
   
   def show
     @movie = Tmdb::Movie.detail(params[:id])
+    @reviews = Review.where(movie_number: params[:id])
   end
 end

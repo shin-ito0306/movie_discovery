@@ -1,7 +1,3 @@
-<% @reviews.each do |review| %>
-  <%= review.movie_name %>
-  <%= review.movie_name %>
-  <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image %><br>
+<%= render 'reviews/reviews', reviews: @reviews %>
   
-  <%= review.review_detail %>
-<% end %>
+

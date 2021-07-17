@@ -6,9 +6,23 @@
   <%= f.label :movie_image %>
   <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %>
   
+  <div id="evalute_star">
+    <%= f.label :evaluation %>
+  </div>
+  
   <%= f.label :review_detail %>
   <%= f.text_area :review_detail %>
   
   <%= f.submit %>
   
 <% end %>
+
+<script>
+  $('#evalute_star').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    readOnly: true,
+    score: "<%= @review.evaluation %>"
+  })
+</script>

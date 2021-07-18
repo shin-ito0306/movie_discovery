@@ -1,4 +1,7 @@
+<div class="row">
 <% @reviews.each do |review| %>
+
+<div class="col-4 text-center">
   <%= link_to review_path(review.id) do %>
     <%= review.movie_name %><br>
     <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image %><br>
@@ -22,4 +25,7 @@
       score: <%= review.evaluation %>,
     });
   </script>
+  </div>
+
 <% end %>
+</div>

@@ -1,24 +1,44 @@
-<h4>名前</h4>
-<%= @member.name %><br>
-<h4>紹介文</h4>
-<%= @member.introduction %><br>
-<h4>プロフィール画像</h4>
-<%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png" %>
-<div id="follow_button">
-  <%= render 'relationships/follow', member: @member %>
+<!--プロフィール-->
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png", size: "300x300" %>
+    </div>
+    <div class="col-8">
+      <div class="row mb-4 mt-3">
+        <div class="col-3">
+          <h4>名前</h4>
+          <%= @member.name %>
+        </div>
+        <div class="col-3 text-center">
+          <%= link_to "フォロー数", member_follower_path(@member.id) %><br>
+          <%= @member.followed_members.count %>
+        </div>
+        <div class="col-3 text-center">
+          <%= link_to "フォロワー数", member_followed_path(@member.id) %><br>
+          <%= @member.follower_members.count %>
+        </div>
+        <div class="follow_button col-3 text-center">
+          <% if @member.id == current_member.id %>
+            <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
+          <% else %>
+            <%= render 'relationships/follow', member: @member %>
+          <% end %>
+        </div>
+      </div>
+      <h4>紹介文</h4>
+      <%= @member.introduction %>
+    </div>
+  </div>
 </div>
-<% if @member.id == current_member.id %>
-  <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
-<% end %>
+
+
+
+
 <li>
   <%= link_to "後で見る" %>
 </li>
-<li>
-  <%= link_to "フォロー一覧", member_follower_path(@member.id) %>
-</li>
-<li>
-  <%= link_to "フォロワー一覧", member_followed_path(@member.id) %>
-</li>
+
 <li>
   <%= link_to "後で見る一覧", member_see_laters_path(member_id: @member.id) %>
 </li>

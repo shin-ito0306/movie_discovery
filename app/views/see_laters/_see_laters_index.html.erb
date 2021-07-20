@@ -1,0 +1,5 @@
+<% see_laters.each do |see_later| %>
+  <%= see_later.movie_name %><br>
+  <%= image_tag 'https://image.tmdb.org/t/p/w300' + see_later.movie_image %>
+  <%= link_to '削除', member_see_laters_path(member_id: current_member.id, movie_number: see_later.movie_number), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+<% end %>

@@ -37,19 +37,23 @@
 </div>
 <ul class="nav justify-content-center">
     <li class="nav-item">
-      <%= link_to "後で見る一覧", member_see_laters_path(member_id: @member.id), class: 'nav-link' %>
+      <%= link_to "後で見る一覧", member_see_laters_path(member_id: @member.id), class: 'nav-link', remote: true %>
     </li>
-    <li id="review_button" class="nav-item">
+    <li class="nav-item">
       <%= link_to "レビュー", member_path(@member.id), class: 'nav-link', remote: true %>
     </li>
   </ul>
 
 
 <!--そのmemberの投稿,または後で見る一覧-->
-<% if current_page?(member_path(@member.id)) %>
-  <%= render 'reviews/reviews', reviews: @reviews %>
-<% else %>
-  
-<% end %>
-  
+
+
+<div id="review_button">
+  <%= render "reviews/reviews", reviews: @reviews %>
+</div>
+
+<div id="see_laters_button">
+
+</div>
+
 

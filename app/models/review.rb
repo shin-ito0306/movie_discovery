@@ -16,7 +16,7 @@ class Review < ApplicationRecord
     if like_search.blank?
       notification = current_member.passive_notifications.new(review_id: review, visited_id: visited, action: 'like')
       if notification.visiter_id == notification.visited_id
-        notification.checke = true
+        notification.check = true
       end
       notification.save if notification.valid?
     end

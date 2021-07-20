@@ -1,10 +1,12 @@
-<div class="row mt-5">
-  <% movies.results.each do |movie| %>
-  <div class="col-md-4 col-sm-12 text-center mb-4">
-    <%= link_to movie_path(movie['id']) do %>
-      <%= image_tag 'https://image.tmdb.org/t/p/w300' + movie['poster_path'], size: "300x450", class: "rounded" %><br>
-      <%= movie['title'] %>
-    <% end %>
+<div class="container">
+  <div class="row mt-5">
+    <% movies.results.each do |movie| %>
+    <div class="col-md-4 col-sm-12 text-center mb-4">
+      <%= link_to movie_path(movie['id']) do %>
+        <%= image_tag 'https://image.tmdb.org/t/p/w300' + movie['poster_path'], size: "300x450", class: "rounded" %><br>
+        <%= movie['title'] %>
+      <% end %>
+    </div>
+  <% end %>
   </div>
-<% end %>
 </div>

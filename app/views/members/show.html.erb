@@ -18,7 +18,7 @@
           <%= link_to "フォロワー数", member_followed_path(@member.id) %><br>
           <%= @member.follower_members.count %>
         </div>
-        <div class="follow_button col-3 text-center">
+        <div id="follow_button<%= @member.id %>", class=" col-3 text-center">
           <% if @member.id == current_member.id %>
             <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
           <% else %>

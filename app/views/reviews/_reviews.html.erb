@@ -20,7 +20,7 @@
               <%= render 'likes/like', review: review %>
             </span>
           </div>
-          <%#= link_to '削除', review_path(review.id), method: :delete %>
+          
           <%= review.review_detail %>
           <div class="text-right">
             <%= link_to 'レビュー詳細', review_path(review.id) %>

@@ -14,7 +14,9 @@
         <% end %>
         <div class="ml-auto mt-1">
           <% if @review.member.id == current_member.id %>
-            <%= link_to '編集', edit_review_path(@review.id), class: "btn btn-outline-danger btn-sm ml-3" %>
+            <%= link_to '編集', edit_review_path(@review.id), class: "btn btn-outline-success btn-sm" %>
+            
+            <%= link_to '削除', review_path(@review.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-sm" %>
           <% end %>
         </div>
       </div>
@@ -41,4 +43,4 @@
           readOnly: true,
           score: <%= @review.evaluation %>,
         });
-      </script>
+</script>

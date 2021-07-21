@@ -1,21 +1,24 @@
 <%= render 'layouts/error_message', object: @review %>
-<%= form_with model:@review, local:true do |f| %>
-  <%= f.label :movie_name %>
-  <%= @review.movie_name %>
-  
-  <%= f.label :movie_image %>
-  <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image %>
-  
-  <div id="evalute_star">
-    <%= f.label :evaluation %>
+<div class="container mt-5">
+  <%= form_with model:@review, local:true do |f| %>
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-sm-12 px-0">
+      <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image, class: "card-img-top" %>
+    </div>
+    <div class="col-md-4 col-sm-12 bg-light card-body">
+      <h5 class="border-bottom"><%= @review.movie_name %></h5>
+      <div id="evalute_star">
+      </div>
+      <h5 class="mt-2"><%= f.label :review_detail, "レビュー内容" %></h5>
+      <%= f.text_area :review_detail, class: "form-control" %>
+      <div class="text-right mt-3">
+        <%= f.submit "保存", class: "btn btn-primary form-control" %>
+      </div>
+      
+    </div>
   </div>
-  
-  <%= f.label :review_detail %>
-  <%= f.text_area :review_detail %>
-  
-  <%= f.submit %>
-  
-<% end %>
+  <% end %>
+</div>
 
 <script>
   $('#evalute_star').raty({

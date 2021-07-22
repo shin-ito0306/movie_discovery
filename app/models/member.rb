@@ -25,21 +25,29 @@ class Member < ApplicationRecord
   
   #通知をする側
   has_many :active_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
-  
+
   def following?(member)
     followed_members.include?(member)
   end
   
   def self.finder(words)
-    return Member.where("name LIKE ?", "%#{words}%")
+    Member.where("name LIKE ?", "%#{words}%")
   end
   
-  def create_notification_follow(current_member, visited)
-    follow_search = Notification.where(visiter_id: current_member.id, visited_id: visited, action: 'follow')
+  def create_notification_follow(current_member)
+    follow_search = Notification.where(visiter_id: current_member.id, visited_id: id, action: 'follow')
     if follow_search.blank?
-      notification = current_member.passive_notifications.new(visited_id: visited, action: 'follow')
+      notification = current_member.passive_notifications.new(visited_id: id, action: 'follow')
       notification.save if notification.valid?
     end
   end
+  
+  def current_member?(current_member)
+    self == current_member
+  end
+  
+  def followed_count
+    followed_members.count
+  end
+  
 end

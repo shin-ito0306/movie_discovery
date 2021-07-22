@@ -1,7 +1,7 @@
 class SeeLatersController < ApplicationController
   
   def index 
-    @see_laters = SeeLater.where(member_id: params[:member_id])
+    @see_laters = SeeLater.serched_by(params[:member_id])
   end
   
   def create

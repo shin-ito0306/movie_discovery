@@ -27,9 +27,9 @@
             </li>
             <li class="nav-item">
               <%= link_to "通知", notifications_index_path, class: "nav-link" %>
-                <% if uncheck_notifications.any? %>
-                  <i class="fas fa-circle"></i>
-                <% end %>
+              <% if uncheck_notifications.any? %>
+                <i class="fas fa-circle"></i>
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to 'フォロー中のレビュー', reviews_path, class: "nav-link" %>

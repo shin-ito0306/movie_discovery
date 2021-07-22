@@ -1,8 +1,7 @@
 class MoviesController < ApplicationController
   
   def index
-    @movies = Tmdb::Movie.popular
-    # @movies = Tmdb::Movie.popular(page: 500)
+    @movies = Tmdb::Movie.popular(page: params[:page_id])
   end
   
   def show

@@ -3,10 +3,14 @@
     <% movies.results.each do |movie| %>
     <div class="col-md-4 col-sm-12 text-center mb-4">
       <%= link_to movie_path(movie['id']) do %>
-        <%= image_tag 'https://image.tmdb.org/t/p/w300' + movie['poster_path'], size: "300x450", class: "rounded" %><br>
+        <%= image_tag 'https://image.tmdb.org/t/p/w300' + "#{movie['poster_path']}", size: "300x450", class: "rounded" %><br>
         <%= movie['title'] %>
       <% end %>
     </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
+
+<% 30.times do |i| %>
+  <%= link_to "#{i}", movies_path(page_id: i) %>
+<% end %>

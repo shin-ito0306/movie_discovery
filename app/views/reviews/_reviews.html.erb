@@ -1,25 +1,42 @@
-<% @reviews.each do |review| %>
-  <%= link_to review_path(review.id) do %>
-    <%= review.movie_name %><br>
-    <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image %><br>
-    <%= review.review_detail %>
+<h2>レビュー一覧</h2>
+<div class="row m-5">
+  <% @reviews.each do |review| %>
+    <div class="col-md-4 col-sm-12 my-4">
+      <div class="card justify-content-center m-4">
+        <%= link_to movie_path(review.movie_number) do %>
+          <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image, class: "card-img-top", size: '300x550' %>
+        <% end %>
+        <div class="text-center">
+          <%= review.movie_name %>
+        </div>
+        <div class="card-body">
+          <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
+          <div class="card-title mt-2">
+              <%= link_to member_path(review.member.id) do %>
+                <%= attachment_image_tag review.member, :member_image, :fill, 10, 10, format: 'jpeg', fallback:"unnamed.png", size:'40x40' %>
+                <%= review.member.name %>
+              <% end %>
+            <span id="like_button<%= review.id %>", class="ml-2">
+              <%= render 'likes/like', review: review %>
+            </span>
+          </div>
+          
+          <%= review.review_detail %>
+          <div class="text-right">
+            <%= link_to 'レビュー詳細', review_path(review.id) %>
+          </div>
+        </div>
+      </div>
+      <script>
+        $('#review-evaluation<%= review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= review.evaluation %>,
+        });
+      </script>
+    </div>
   <% end %>
-  <%= link_to member_path(review.member.id) do %>
-    <%= review.member.name %>
-    <%= attachment_image_tag review.member, :member_image, :fill, 10, 10, format: 'jpeg', fallback:"unnamed.png", size:'20x20' %>
-  <% end %>
-  <div id="like_button">
-    <%= render 'likes/like', review: review %>
-  </div>
-  <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
-  <script>
-    $('#review-evaluation<%= review.id %>').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      readOnly: true,
-      score: <%= review.evaluation %>,
-    });
-  </script>
-<% end %>
+</div>

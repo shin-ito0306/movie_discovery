@@ -4,7 +4,6 @@ class RelationshipsController < ApplicationController
     @member_followed = Member.find(params[:member_id])
     current_member.relationships.create(followed_id: params[:member_id])
     @member_followed.create_notification_follow(current_member, @member_followed.id)
-    
   end
   
   def destroy

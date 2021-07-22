@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   
+  
+  
   def index
     #自分の投稿が表示されない
     @reviews = Review.where(member_id: current_member.followed_members)
@@ -20,6 +22,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to member_path(current_member.id)
     else
+      @movie = Tmdb::Movie.detail(params[:review][:movie_number])
       render :new
     end
   end

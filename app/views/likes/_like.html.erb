@@ -3,7 +3,7 @@
     <i class="fas fa-heart" style="color: red;"></i><%= review.likes.count %>
   <% end %>
 <% else %>
-  <%= link_to review_likes_path(review_id:review.id), method: :post, remote:true do %>
+  <%= link_to review_likes_path(review_id: review.id), method: :post, remote:true do %>
     <i class="far fa-heart" style="color: red;"></i><%= review.likes.count %>
   <% end %>
 <% end %>

@@ -1,6 +1,3 @@
-<% @sees.each do |see| %>
-  <%= see.movie_name %><br>
-  <%= image_tag 'https://image.tmdb.org/t/p/w300' + see.movie_image %>
-  <%= link_to '削除', member_see_laters_path(member_id: current_member.id, movie_number: see.movie_number), method: :delete, data: { confirm: "本当に削除しますか?" } %>
-<% end %>
-  
+<div class="container">
+<%= render 'see_laters_index', see_laters: @see_laters %>
+</div>

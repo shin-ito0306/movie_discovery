@@ -25,3 +25,17 @@
   padding-top: 0rem;
   color: #efa04c;
 }
+
+body {
+  background-color: #ff8;
+}
+
+li {
+  list-style: none;
+}
+
+.detail {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

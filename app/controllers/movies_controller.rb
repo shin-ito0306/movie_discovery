@@ -1,10 +1,8 @@
 class MoviesController < ApplicationController
-  require 'themoviedb-api'
-  Tmdb::Api.key(ENV['API_KEY'])
-  Tmdb::Api.language("ja")
   
   def index
     @movies = Tmdb::Movie.popular
+    # @movies = Tmdb::Movie.popular(page: 500)
   end
   
   def show

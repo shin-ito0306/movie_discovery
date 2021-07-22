@@ -33,3 +33,9 @@ body {
 li {
   list-style: none;
 }
+
+.detail {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

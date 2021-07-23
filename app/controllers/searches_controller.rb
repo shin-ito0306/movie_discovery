@@ -1,12 +1,34 @@
 class SearchesController < ApplicationController
   def search
     @kind = params[:kind]
-    if params[:kind] == "会員" && params[:genre] == ""
+    @genre = params[:genre]
+    if params[:kind] == "会員" && params[:word] != nil
       @members = Member.finder(params[:word])
-    elsif params[:kind] == "作品" && params[:genre] == ""
-      @movies = Tmdb::Search.movie(params[:word])
-    elsif params[:kind] == "ジャンル" && params[:genre] != nil
-      @movies = Tmdb::Genre.movies(params[:genre])
+    elsif params[:kind] == "作品" && params[:word] != nil
+      redirect_to searches_word_search_path(word_name: params[:word])
+    elsif params[:kind] == "検索の種類" && params[:genre] != nil
+      redirect_to searches_genre_search_path(genre_name: params[:genre])
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+  
+  def genre_search
+    @genre = params[:genre_name] #searchアクションからのパラメーターと次のページをクリックしたときに送られるのパラメーター
+    movie_total_pages = Tmdb::Genre.movies(@genre).total_pages
+    
+    if params[:page_id].to_i < 501 #検索した1ページ目はparams[:page_id]はnil(0), 2ページ目以降で使う
+      @movies = Tmdb::Genre.movies(@genre, page: params[:page_id])
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+  
+  def word_search
+    @word = params[:word_name] #searchアクションからのパラメーターと次のページをクリックしたときに送られるのパラメーター
+    movie_total_pages = Tmdb::Search.movie(@word).total_pages
+    if movie_total_pages > params[:page_id].to_i
+      @movies = Tmdb::Search.movie(@word, page: params[:page_id])
     else
       redirect_back(fallback_location: root_path)
     end

@@ -2,10 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-4 px-0">
       <%= link_to movie_path(@review.movie_number) do %>
-      <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image, class: "card-img-top" %>
+      <%= image_tag 'https://image.tmdb.org/t/p/w300' + @review.movie_image, class: "card-img-top rounded" %>
       <% end %>
     </div>
-    <div class="col-4 bg-light">
+    <div class="col-4 bg-light card">
       
       <div class="row mb-3 m-2 mt-4">
         <%= link_to member_path(@review.member.id) do %>
@@ -29,7 +29,10 @@
           <%= render 'likes/like', review: @review %>
         </span>
       </div>
-      <%= @review.review_detail %>
+      
+        <%= @review.review_detail %>
+      
+      
       
     </div>
   </div>

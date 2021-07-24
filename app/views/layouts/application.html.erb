@@ -11,35 +11,35 @@
 
   <body>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to 'New Movie', root_path, class: "navbar-brand" %>
+    <nav class="navbar navbar-expand-lg navbar-light py-3 px-5", style="background-color:#000022;">
+      <%= link_to "New映画発見!!", root_path, class: "fas fa-video", :style=>"color:white; font-size: 35px;" %>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <% if member_signed_in? %>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "マイページ", member_path(current_member.id), class: "nav-link" %>
+              <%= link_to "マイページ", member_path(current_member.id), class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "作品一覧", movies_path, class: "nav-link" %>
+              <%= link_to "作品一覧", movies_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "通知", notifications_index_path, class: "nav-link" %>
+              <%= link_to "通知", notifications_index_path, class: "nav-link", :style=>"color:white;" %>
               <% if uncheck_notifications.any? %>
                 <i class="fas fa-circle"></i>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to 'フォロー中のレビュー', reviews_path, class: "nav-link" %>
+              <%= link_to 'フォロー中のレビュー', reviews_path, class: "nav-link", :style=>"color:white;" %>
             </li>
           <% else %> 
             <li class="nav-item">
-              <%= link_to "新規登録", new_member_registration_path, class: "nav-link" %>
+              <%= link_to "新規登録", new_member_registration_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_member_session_path, class: "nav-link" %>
+              <%= link_to "ログイン", new_member_session_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
               

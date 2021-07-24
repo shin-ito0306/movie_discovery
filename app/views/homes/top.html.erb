@@ -1,2 +1,22 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="text-center my-5">
+<h1 class="display-3 my-5"><i class="fas fa-video"></i>New映画発見!!</i></h1>
+<h3 class="my-5">新しい映画を発見しよう！</h3>
+<p>最近観たい映画が見つからない。そんな悩みあるのではないでしょうか。<br>
+    他の人のレビューや作品を検索して観たい映画を発見しよう！
+</p>
+</div>
+<div class="container">
+  <h1 class="border-bottom">おすすめ映画作品</h1>
+  <div class="container">
+  <div class="row mt-5">
+    <% @movies.each do |movie| %>
+    <div class="col-md-4 col-sm-12 text-center mb-4">
+      <%= link_to movie_path(movie['id']) do %>
+        <%= image_tag 'https://image.tmdb.org/t/p/w300' + "#{movie['poster_path']}", size: "300x450", class: "rounded" %><br>
+        <%= movie['title'] %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>

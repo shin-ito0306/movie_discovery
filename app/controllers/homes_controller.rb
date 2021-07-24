@@ -1,5 +1,10 @@
 class HomesController < ApplicationController
   def top
+    movie_all = Tmdb::Movie.popular
+    @movies = []
+    (1..6).each do |i|
+      @movies << movie_all.results[i]
+    end
   end
   
   def unsubscribe

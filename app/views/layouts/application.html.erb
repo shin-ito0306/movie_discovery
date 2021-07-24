@@ -11,7 +11,7 @@
 
   <body>
     
-    <nav class="navbar navbar-expand-lg navbar-light py-3 px-5", style="background-color:#000022;">
+    <nav class="navbar navbar-expand-lg py-3 px-5", style="background-color:#000022;">
       <%= link_to "New映画発見!!", root_path, class: "fas fa-video nav-link", :style=>"color:white; font-size: 35px;" %>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
@@ -48,11 +48,13 @@
         </ul>  
       </div>
     </nav>
-    <%= form_with url:searches_search_path, method: :get, local:true do |f| %>
-      <%= f.select :kind, options_for_select([ ['検索の種類'], ['会員'], ['作品']]) %>
-      <%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択(ジャンル検索時)" %>
-      <%= f.text_field :word, :placeholder => "タイトルを入力" %>
-      <%= f.submit '検索' %>
+    <% if member_signed_in? %>
+      <%= form_with url:searches_search_path, method: :get, local:true do |f| %>
+        <%= f.select :kind, options_for_select([ ['検索の種類'], ['会員'], ['作品']]) %>
+        <%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択(ジャンル検索時)" %>
+        <%= f.text_field :word, :placeholder => "タイトルを入力" %>
+        <%= f.submit '検索' %>
+      <% end %>
     <% end %>
     <span class="Notification">
       <% flash.each do |key, value| %>
@@ -60,5 +62,11 @@
       <% end %>
     </span>
     <%= yield %>
+    
+    <footer style="background-color:#000022; height:83px; line-height: 83px;">
+      <p class="text-center", style="color:white;" >
+        ©2021 New映画発見!! All Rights Reserved.
+      </p>
+    </footer>
   </body>
 </html>

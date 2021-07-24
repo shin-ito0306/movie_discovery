@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :member_image, :introduction])
   end
   
+  def after_sign_in_path_for(resource) 
+    reviews_path
+  end
+  
 end

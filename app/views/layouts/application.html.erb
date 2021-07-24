@@ -48,6 +48,14 @@
         </ul>  
       </div>
     </nav>
+    
+    <!--エラーメッセージ-->
+    <% if notice %>
+    <div class="bg-success text-center", style="color:white;"><%= notice %></div>
+    <% elsif alert %>
+    <div class="bg-danger text-center", style="color:white;"><%= alert %></div>
+    <% end %>
+    
     <% if member_signed_in? %>
       <%= form_with url:searches_search_path, method: :get, local:true do |f| %>
       <div class="container">
@@ -65,11 +73,6 @@
       <% end %>
     <% end %>
     
-    <span class="Notification">
-      <% flash.each do |key, value| %>
-        <%= content_tag :div, value, class: key %>
-      <% end %>
-    </span>
     <%= yield %>
     
     <footer style="background-color:#000022; height:83px; line-height: 83px;">

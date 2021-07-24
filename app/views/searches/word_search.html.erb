@@ -1,0 +1,10 @@
+<%= render 'movies/list', movies: @movies %>
+<% @pages.each do |page| %>
+  <% if @page == page %>
+    <%= link_to "#{page}", searches_word_search_path(page_id: page, word_name: @word), :style=>"color:black;" %>
+  <% else %>
+    <%= link_to "#{page}", searches_word_search_path(page_id: page, word_name: @word) %>
+  <% end %>
+<% end %>
+
+<%= link_to "#{@movie_total_pages}", searches_word_search_path(page_id: @movie_total_pages, word_name: @word) %>

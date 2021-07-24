@@ -11,15 +11,15 @@
           <%= @member.name %>
         </div>
         <div class="col-3 text-center">
-          <%= link_to "フォロー数", member_follower_path(@member.id) %><br>
-          <%= @member.followed_members.count %>
+          <%= link_to "フォロー", member_follower_path(@member.id) %><br>
+          <%= @member.followed_count %>
         </div>
         <div class="col-3 text-center">
-          <%= link_to "フォロワー数", member_followed_path(@member.id) %><br>
+          <%= link_to "フォロワー", member_followed_path(@member.id) %><br>
           <%= @member.follower_members.count %>
         </div>
         <div id="follow_button<%= @member.id %>", class=" col-3 text-center">
-          <% if @member.id == current_member.id %>
+          <% if @member.current_member?(current_member) %>
             <%= link_to "会員情報編集", edit_member_path(current_member.id) %>
           <% else %>
             <%= render 'relationships/follow', member: @member %>

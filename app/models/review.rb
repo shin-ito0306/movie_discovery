@@ -21,4 +21,10 @@ class Review < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
+  def written_by?(current_member)
+    self == current_member
+  end
+  
 end
+

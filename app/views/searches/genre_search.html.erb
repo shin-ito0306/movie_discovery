@@ -1,0 +1,11 @@
+<%= render 'movies/list', movies: @movies %>
+
+<% @pages.each do |page| %>
+  <% if @page == page %>
+    <%= link_to "#{page}", searches_genre_search_path(page_id: page, genre_name: @genre), :style=>"color:black;" %>
+  <% else %>
+    <%= link_to "#{page}", searches_genre_search_path(page_id: page, genre_name: @genre) %>
+  <% end %>
+<% end %>
+
+<%= link_to "#{@movie_total_pages}", searches_genre_search_path(page_id: @movie_total_pages, genre_name: @genre) %>

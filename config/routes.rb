@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get 'notifications/index'
+  get 'about' => 'homes#about'
   get 'unsubscribe' => 'homes#unsubscribe'
   get 'withdrawal' => 'homes#withdrawal'
   get 'searches/search' => 'searches#search'
+  get 'searches/genre_search' => 'searches#genre_search'
+  get 'searches/word_search' => 'searches#word_search'
   root :to => "homes#top"
   devise_for :members, controllers: {
     passwords: 'members/passwords',

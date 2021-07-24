@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="text-center my-5">
+    <h1 class="display-3 my-5"><i class="fas fa-video"></i>New映画発見!!とは？</i></h1>
+    <h4 class="my-3">最近観たい映画が見つからない。そんな悩みあるのではないでしょうか。</h4>
+    <h4 class="my-3">そんな悩みを解決できるサイトです。</h4>
+    <h4 class="my-3">観た作品のレビューを書いたり、他の人のレビューを見て、</h4>
+    <h4 class="my-3">今まで知らなかった作品を共有しませんか？</h4>
+  </div>
+  
+  <h2 class="text-center border-bottom my-5 py-5">主な機能</h2>
+  <div class="card-deck text-center">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">レビュー機能</h3>
+        <i class="far fa-edit fa-5x my-4"></i>
+        <p class="card-text", style="font-size: 20px;">映画の詳細ページからレビューを書いて投稿し面白かった映画を共有しよう！</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">タイムライン</h4>
+        <i class="far fa-clock fa-5x my-4"></i>
+        <p class="card-text", style="font-size: 20px;">タイムラインからフォロー中のユーザーの最新投稿を確認して新しい映画を見つけよう！</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">後で見る</h4>
+        <i class="far fa-clipboard fa-5x my-4"></i>
+        <p class="card-text" style="font-size: 20px;">観たい作品があったら作品詳細ページから後で見るに追加してマイページからいつでも確認できるようにしよう！</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center m-5">
+  <%= link_to "新規登録", new_member_registration_path, class:"btn btn-primary mx-3" %>
+  <%= link_to "ログイン", new_member_session_path, class:"btn btn-primary mx-3" %>
+  </div>
+</div>

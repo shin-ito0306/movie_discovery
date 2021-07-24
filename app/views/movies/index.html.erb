@@ -1,4 +1,11 @@
 <%= render 'list', movies: @movies %>
+<% @pages.each do |page| %>
+  <% if @page == page %>
+    <%= link_to "#{page}", movies_path(page_id: page), :style=>"color:black;" %>
+  <% else %>
+    <%= link_to "#{page}", movies_path(page_id: page) %>
+  <% end %>
+<% end %>
 
 
 

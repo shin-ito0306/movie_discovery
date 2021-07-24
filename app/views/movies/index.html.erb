@@ -1,11 +1,12 @@
 <%= render 'list', movies: @movies %>
-<% @pages.each do |page| %>
-  <% if @page == page %>
-    <%= link_to "#{page}", movies_path(page_id: page), :style=>"color:black;" %>
-  <% else %>
-    <%= link_to "#{page}", movies_path(page_id: page) %>
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <% @pages.each do |page| %>
+    <% if @page == page %>
+      <%= link_to "#{page}", movies_path(page_id: page), :style=>"color:black;", class: "m-1" %>
+    <% else %>
+      <%= link_to "#{page}", movies_path(page_id: page), class: "m-1" %>
+    <% end %>
   <% end %>
-<% end %>
-
-
-
+  </div>
+</div>

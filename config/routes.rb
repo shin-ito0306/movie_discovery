@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'notifications/index'
+  get 'about' => 'homes#about'
   get 'unsubscribe' => 'homes#unsubscribe'
   get 'withdrawal' => 'homes#withdrawal'
   get 'searches/search' => 'searches#search'

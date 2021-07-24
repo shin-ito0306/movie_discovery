@@ -7,6 +7,10 @@ class HomesController < ApplicationController
     end
   end
   
+  def about
+    
+  end
+  
   def unsubscribe
     @member = Member.find(current_member.id)
   end

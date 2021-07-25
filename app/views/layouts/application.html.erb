@@ -49,6 +49,7 @@
       </div>
     </nav>
     
+    <main>
     <!--エラーメッセージ-->
     <% if notice %>
     <div class="bg-success text-center", style="color:white;"><%= notice %></div>
@@ -74,6 +75,7 @@
     <% end %>
     
     <%= yield %>
+    </main>
     
     <footer style="background-color:#000022; height:83px; line-height: 83px;">
       <p class="text-center", style="color:white;" >

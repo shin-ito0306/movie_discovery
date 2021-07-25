@@ -10,12 +10,12 @@
         <div class="col-8 d-flex align-items-center">
           <% case notification.action %>
             <% when 'like' then %>
-              <%= link_to "#{notification.visiter.name}があなたのレビューをいいねしました", review_path(notification.review_id) %>
+              <%= link_to "#{notification.visiter.name}があなたのレビューをいいねしました", review_path(notification.review_id), class: "text-dark" %>
               <span class="ml-4">
                 <%= notification.created_at.strftime('%Y/%m/%d %H:%M:%S') %>  
               </span>
             <% when 'follow' then %>
-              <%= link_to "#{notification.visiter.name}にフォローされました", member_path(notification.visiter_id) %>
+              <%= link_to "#{notification.visiter.name}にフォローされました", member_path(notification.visiter_id), class: "text-dark" %>
               <span class="ml-4">
                 <%= notification.created_at.strftime('%Y/%m/%d %H:%M:%S') %>  
               </span>

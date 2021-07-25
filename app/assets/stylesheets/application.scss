@@ -19,24 +19,31 @@
 @import 'font-awesome';
 
 
-.fa-circle {
-  position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
-}
+
 
 body {
-  // background-image: url(pattern_54.jpg);
-  
+  background-image: url(white_00101.jpg);
+  background-size: contain;
+  height: 100%;
 }
 
 li {
   list-style: none;
 }
 
+.fa-circle {
+  position: absolute;
+  padding-left: 5px;
+  padding-top: 4px;
+  color: #efa04c;
+}
+
 .detail {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+select {
+  width: 198px;
 }

@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.member_id = current_member.id
     if @review.save
+      flash[:notice] = "投稿しました"
       redirect_to member_path(current_member.id)
     else
       @movie = Tmdb::Movie.detail(params[:review][:movie_number])
@@ -34,6 +35,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:notice] = "編集しました"
       redirect_to member_path(current_member.id)
     else
       render :edit

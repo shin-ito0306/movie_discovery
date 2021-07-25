@@ -26,10 +26,10 @@
               <%= link_to "作品一覧", movies_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "通知", notifications_index_path, class: "nav-link", :style=>"color:white;" %>
               <% if uncheck_notifications.any? %>
-                <i class="fas fa-circle"></i>
+                <span><i class="fas fa-circle"></i></span>
               <% end %>
+              <%= link_to "通知", notifications_index_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
               <%= link_to 'タイムライン', reviews_path, class: "nav-link", :style=>"color:white;" %>
@@ -48,25 +48,41 @@
         </ul>  
       </div>
     </nav>
+    
+    <main>
+    <!--エラーメッセージ-->
+    <% if notice %>
+    <div class="bg-success text-center", style="color:white;"><%= notice %></div>
+    <% elsif alert %>
+    <div class="bg-danger text-center", style="color:white;"><%= alert %></div>
+    <% end %>
+    
     <% if member_signed_in? %>
       <%= form_with url:searches_search_path, method: :get, local:true do |f| %>
-        <%= f.select :kind, options_for_select([ ['検索の種類'], ['会員'], ['作品']]) %>
-        <%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択(ジャンル検索時)" %>
-        <%= f.text_field :word, :placeholder => "タイトルを入力" %>
-        <%= f.submit '検索' %>
+      <div class="container mt-3">
+        <div class="row">
+          <div class="row ml-auto">
+            <div class="col-12">
+              <div><%= f.select :kind, options_for_select([['検索の種類'], ['会員'], ['作品']]) %></div>
+              <div><%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択" %></div>
+            </div>
+          </div>
+          <div class="form-inline"><%= f.text_field :word, :placeholder => "タイトルを入力", :style=>"height:48px;" %></div>
+          <%= f.submit '検索' %>
+        </div>
+      </div>
       <% end %>
     <% end %>
-    <span class="Notification">
-      <% flash.each do |key, value| %>
-        <%= content_tag :div, value, class: key %>
-      <% end %>
-    </span>
-    <%= yield %>
     
-    <footer style="background-color:#000022; height:83px; line-height: 83px;">
+    <%= yield %>
+    </main>
+    
+    <footer class="footer", style="background-color:#000022; height:83px; line-height: 83px;">
       <p class="text-center", style="color:white;" >
         ©2021 New映画発見!! All Rights Reserved.
       </p>
     </footer>
   </body>
+  
+  
 </html>

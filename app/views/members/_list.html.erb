@@ -1,0 +1,25 @@
+<div class="container">
+  <% members.each do |member| %>
+  <div class="row text-center border-bottom">
+    <div class="col-3 my-3">
+      <%= link_to member_path(member.id) do %>
+        <%= attachment_image_tag member, :member_image, format: 'jpeg', fallback:"unnamed.png", size:'100x100' %>
+      <% end %>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <h3><%= member.name %></h3>
+    </div>
+    <div class="col-2  align-items-center d-flex">
+      <%= link_to "フォロー", member_follower_path(member.id), class: "mr-2 text-dark" %>
+      <%= member.followed_members.count %>
+    </div>
+    <div class="col-2 align-items-center d-flex">
+      <%= link_to "フォロワー", member_followed_path(member.id), class: "mr-2 text-dark" %>
+      <%= member.follower_members.count %>
+    </div>
+    <div id="follow_button<%= member.id %>" class="col-2 align-items-center d-flex">
+      <%= render 'relationships/follow', member: member %>
+    </div>
+  </div>
+  <% end %>
+</div>

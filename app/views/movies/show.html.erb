@@ -1,0 +1,54 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <%= image_tag 'https://image.tmdb.org/t/p/w300' + @movie['poster_path'] %>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <h3><%= @movie['title'] %></h3>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <%= link_to '後で見るに追加', member_see_laters_path(member_id: current_member.id, movie_number: @movie['id']), method: :post, data: { confirm: "本当に追加しますか?" }, class: "btn btn-primary btn-sm m-1 col-sm-12 col-md-3" %>
+    <%= link_to 'レビューを書く', new_review_path(movie_number: @movie['id']), class: "btn btn-primary btn-sm m-1 col-sm-12 col-md-3" %>
+  </div>
+  <div class="row justify-content-center mx-3">
+    <%= @movie['overview'] %>
+  </div>
+</div>
+
+<!--レビュー一覧-->
+<div class="container my-5">
+  <h3>レビュー一覧</h3>
+  <div class="row m-5">
+    <% @reviews.each do |review| %>
+      <div class="col-4 my-4">
+        <div class="bg-light card p-3 justify-content-center">
+        <%= link_to member_path(review.member.id) do %>
+          <%= attachment_image_tag review.member, :member_image, :fill, 10, 10, format: 'jpeg', fallback:"unnamed.png", size:'40x40' %>
+          <%= review.member.name %>
+        <% end %>
+        
+        <div id="review-evaluation<%= review.id %>" data-score="<%= review.evaluation %>"></div>
+        <div id="like_button<%= review.id %>", class="pt-1 ml-1">
+          <%= render 'likes/like', review: review %>
+        </div>
+        <div class="detail">
+          <%= review.review_detail %>
+        </div>
+        <div class="text-right">
+            <%= link_to 'レビュー詳細', review_path(review.id) %>
+          </div>
+        </div>
+      </div>
+      <script>
+    $('#review-evaluation<%= review.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= review.evaluation %>,
+    });
+  </script>
+    <% end %>
+  </div>
+</div>
+

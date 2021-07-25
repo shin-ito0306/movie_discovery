@@ -1,0 +1,12 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <h1 class="col-12 text-center my-4"><%= @member.name %>様</h1>
+    <h2 class="col-12 text-center my-4">本当に退会しますか？</h2>
+    <h2 class="col-12 text-center my-4">退会すると再度をグインすることが出来なくなります。</h2>
+    <h2 class="col-12 text-center my-4">退会するには退会するボタンを押してください</h2>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <%= link_to '退会しない', member_path(@member.id), class: "mx-3 col-3 btn btn-primary" %>
+    <%= link_to '退会', withdrawal_path, class: "mx-3 col-3 btn btn-danger" %>
+  </div>
+</div>

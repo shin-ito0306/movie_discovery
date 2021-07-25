@@ -1,0 +1,14 @@
+<h2 class="text-center mt-5">後で見る一覧</h2>
+<div class="container">
+  <div class="row mt-5">
+    <% see_laters.each do |see_later| %>
+    <div class="col-md-4 col-sm-12 text-center mb-4">
+      <%= link_to movie_path(see_later.movie_number) do %>
+        <%= image_tag 'https://image.tmdb.org/t/p/w300' + see_later.movie_image, size: "300x450", class: "rounded" %><br>
+      <% end %>
+      <%= see_later.movie_name %><br>
+      <%= link_to '削除', member_see_laters_path(member_id: current_member.id, movie_number: see_later.movie_number), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+    </div>
+  <% end %>
+  </div>
+</div>

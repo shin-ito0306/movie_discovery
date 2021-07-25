@@ -1,0 +1,57 @@
+<!--プロフィール-->
+<div class="container p-4 mt-4 rounded", style="background-color: #eeeeee;">
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png", size: "300x300" %>
+    </div>
+    <div class="col-8">
+      <div class="row mb-4 mt-3">
+        <div class="col-3">
+          <h4>名前</h4>
+          <%= @member.name %>
+        </div>
+        <div class="col-3 text-center ">
+          <%= link_to "フォロー", member_follower_path(@member.id), class: "text-dark" %><br>
+          <%= @member.followed_count %>
+        </div>
+        <div class="col-3 text-center">
+          <%= link_to "フォロワー", member_followed_path(@member.id), class: "text-dark" %><br>
+          <%= @member.follower_members.count %>
+        </div>
+        <div id="follow_button<%= @member.id %>", class=" col-3 text-center">
+          <% if @member.current_member?(current_member) %>
+            <%= link_to "会員情報編集", edit_member_path(current_member.id), class: "btn btn-success" %>
+          <% else %>
+            <%= render 'relationships/follow', member: @member %>
+          <% end %>
+        </div>
+      </div>
+      <h4>紹介文</h4>
+      <%= @member.introduction %>
+    </div>
+  </div>
+</div>
+
+  
+  
+</div>
+<ul class="nav justify-content-center mt-5">
+  <li class="nav-item">
+    <%= link_to "後で見る", member_see_laters_path(member_id: @member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "レビュー", member_path(@member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>
+  </li>
+</ul>
+
+<!--レビュー一覧-->
+<div id="review_button">
+  <%= render "reviews/reviews", reviews: @reviews %>
+</div>
+
+<!--後で見る一覧-->
+<div id="see_laters_button">
+
+</div>
+
+

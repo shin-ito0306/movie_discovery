@@ -1,0 +1,17 @@
+<% if @kind == "会員" %>
+  <%= render 'members/list', members: @members %>
+<% elsif @kind == '作品' || @kind == '検索の種類' %>
+  <%= render 'movies/list', movies: @movies %>
+  <% 30.times do |i| %>
+    <%= link_to "#{i}", searches_search_path(page_id: i, kind_name: @kind, genre_name: @genre) %>
+  <% end %>
+<% elsif @kind_name == "作品" || @kind_name == "検索の種類" %>
+  <%= render 'movies/list', movies: @movies %>
+  <% 505.times do |i| %>
+    <%= link_to "#{i}", searches_search_path(page_id: i, kind_name: @kind_name, genre_name: @genre_name) %>
+  <% end %>
+<% end %>
+
+
+
+

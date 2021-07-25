@@ -26,10 +26,10 @@
               <%= link_to "作品一覧", movies_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "通知", notifications_index_path, class: "nav-link", :style=>"color:white;" %>
               <% if uncheck_notifications.any? %>
-                <i class="fas fa-circle"></i>
+                <span><i class="fas fa-circle"></i></span>
               <% end %>
+              <%= link_to "通知", notifications_index_path, class: "nav-link", :style=>"color:white;" %>
             </li>
             <li class="nav-item">
               <%= link_to 'タイムライン', reviews_path, class: "nav-link", :style=>"color:white;" %>
@@ -77,10 +77,12 @@
     <%= yield %>
     </main>
     
-    <footer style="background-color:#000022; height:83px; line-height: 83px;">
+    <footer class="footer", style="background-color:#000022; height:83px; line-height: 83px;">
       <p class="text-center", style="color:white;" >
         ©2021 New映画発見!! All Rights Reserved.
       </p>
     </footer>
   </body>
+  
+  
 </html>

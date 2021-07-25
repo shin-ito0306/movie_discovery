@@ -1,8 +1,8 @@
 <div class="container my-5 py-5">
   <div class="row justify-content-center">
     <div class="card col-sm-5 text-center pb-4">
+      <h2 class="mb-5 mt-5">Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h2 class="mb-5 mt-5">Log in</h2>
         <div class="field-form-group mb-3">
           <%= f.email_field :email, autofocus: true, placeholder: 'メールアドレス', autocomplete: "email", class: "col-10 mb-3" %>
         </div>
@@ -14,7 +14,7 @@
         
         <%# if devise_mapping.rememberable? %>
           <!--<div class="field col-8 mx-3 mb-5">-->
-            <!--<%= f.check_box :remember_me %>-->
+            <%#= f.check_box :remember_me %>
             <%#= f.label :remember_me %>
           <!--</div>-->
         <%# end %>

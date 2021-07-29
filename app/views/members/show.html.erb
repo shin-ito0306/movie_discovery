@@ -1,9 +1,7 @@
 <!--プロフィール-->
 <div class="container p-4 mt-4 rounded", style="background-color: #eeeeee;">
   <div class="row">
-    <div class="col-4">
-      <%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png", size: "300x300" %>
-    </div>
+    <%= attachment_image_tag @member, :member_image, :fill, 100, 100, format: 'jpeg', fallback:"unnamed.png", size: "300x300", class: "col-4" %>
     <div class="col-8">
       <div class="row mb-4 mt-3">
         <div class="col-3">
@@ -32,9 +30,6 @@
   </div>
 </div>
 
-  
-  
-</div>
 <ul class="nav justify-content-center mt-5">
   <li class="nav-item">
     <%= link_to "後で見る", member_see_laters_path(member_id: @member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>

@@ -2,7 +2,7 @@
   <h2 class="text-center mt-5">レビュー一覧</h2>
   <div class="row">
     <% @reviews.each do |review| %>
-      <div class="col-lg-4 col-sm-6 col-12 my-4">
+      <div class="col-lg-4 col-12 col-sm-6 my-4">
         <div class="card justify-content-center ">
           <%= link_to movie_path(review.movie_number) do %>
             <%= image_tag 'https://image.tmdb.org/t/p/w300' + review.movie_image, class: "card-img-top", size: '300x550' %>

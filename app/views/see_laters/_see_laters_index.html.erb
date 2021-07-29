@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row mt-5">
     <% see_laters.each do |see_later| %>
-    <div class="col-lg-4 col-md-6 text-center mb-4">
+    <div class="col-lg-4 col-sm-6 text-center mb-4">
       <%= link_to movie_path(see_later.movie_number) do %>
         <%= image_tag 'https://image.tmdb.org/t/p/w300' + see_later.movie_image, size: "300x450", class: "rounded" %><br>
       <% end %>

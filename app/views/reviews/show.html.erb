@@ -12,7 +12,8 @@
           <%= @review.member.name %>
         <% end %>
         <div class="ml-auto mt-1">
-          <% if @review.written_by?(current_member) %>
+          <%# byebug %>
+          <% if @review.written_by?(current_member.id) %>
             <%= link_to '編集', edit_review_path(@review.id), class: "btn btn-outline-success btn-sm" %>
             <%= link_to '削除', review_path(@review.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-sm" %>
           <% end %>

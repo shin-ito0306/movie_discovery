@@ -10,17 +10,21 @@
           <h4>名前</h4>
           <%= @member.name %>
         </div>
-        <div class="col-3 text-center ">
+        <div class="col-2 text-center ">
           <%= link_to "フォロー", member_follower_path(@member.id), class: "text-dark" %><br>
           <%= @member.followed_count %>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-2 text-center">
           <%= link_to "フォロワー", member_followed_path(@member.id), class: "text-dark" %><br>
           <%= @member.follower_members.count %>
         </div>
-        <div id="follow_button<%= @member.id %>", class=" col-3 text-center">
+        <div class="col-2 text-center ">
+          <span>投稿数</span><br>
+          <%= @member.reviews.count %>
+        </div>
+        <div id="follow_button<%= @member.id %>", class=" col-2 text-center">
           <% if @member.current_member?(current_member) %>
-            <%= link_to "会員情報編集", edit_member_path(current_member.id), class: "btn btn-success" %>
+            <%= link_to "会員編集", edit_member_path(current_member.id), class: "btn btn-success" %>
           <% else %>
             <%= render 'relationships/follow', member: @member %>
           <% end %>

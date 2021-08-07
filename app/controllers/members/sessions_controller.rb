@@ -2,17 +2,6 @@
 
 class Members::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :reject_members, only: [:create]
-  
-  
-  def reject_members
-    @member = Member.find_by(email: params[:member][:email])
-    if @member
-      if @member.valid_password?(params[:member][:password]) && @member.withdrawal_status == true
-        redirect_to new_member_session_path
-      end
-    end
-  end
 
   # GET /resource/sign_in
   # def new

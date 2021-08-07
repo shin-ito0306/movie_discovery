@@ -12,7 +12,11 @@
   <body>
     
     <nav class="navbar navbar-expand-lg py-3 px-5", style="background-color:#000022;">
-      <%= link_to "New映画発見!!", root_path, class: "fas fa-video nav-link", :style=>"color:white; font-size: 35px;" %>
+      <% if member_signed_in? %>
+        <%= link_to "New映画発見!!", reviews_path, class: "fas fa-video nav-link", :style=>"color:white; font-size: 35px;" %>
+      <% else %>
+        <%= link_to "New映画発見!!", root_path, class: "fas fa-video nav-link", :style=>"color:white; font-size: 35px;" %>
+      <% end %>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <% if member_signed_in? %>

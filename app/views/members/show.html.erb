@@ -12,15 +12,15 @@
         </div>
         <div class="col-2 text-center ">
           <%= link_to "フォロー", member_follower_path(@member.id), class: "text-dark" %><br>
-          <%= @member.followed_count %>
+          <%= @member.following_count %>
         </div>
         <div class="col-2 text-center">
           <%= link_to "フォロワー", member_followed_path(@member.id), class: "text-dark" %><br>
-          <%= @member.follower_members.count %>
+          <%= @member.followed_count %>
         </div>
         <div class="col-2 text-center ">
           <span>投稿数</span><br>
-          <%= @member.reviews.count %>
+          <%= @member.posted_count %>
         </div>
         <div id="follow_button<%= @member.id %>", class=" col-2 text-center">
           <% if @member.current_member?(current_member) %>
@@ -36,9 +36,6 @@
   </div>
 </div>
 
-  
-  
-</div>
 <ul class="nav justify-content-center mt-5">
   <li class="nav-item">
     <%= link_to "後で見る", member_see_laters_path(member_id: @member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>
@@ -57,5 +54,3 @@
 <div id="see_laters_button">
 
 </div>
-
-

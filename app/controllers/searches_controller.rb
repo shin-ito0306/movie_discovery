@@ -21,8 +21,6 @@ class SearchesController < ApplicationController
     #ページネーション
     @movie_total_pages = Tmdb::Genre.movies(@genre).total_pages
     @page = params[:page_id].to_i
-    
-    
     if params[:page_id].to_i < 501 #検索した1ページ目はparams[:page_id]はnil(0), 2ページ目以降で使う
       @movies = Tmdb::Genre.movies(@genre, page: params[:page_id])
     else

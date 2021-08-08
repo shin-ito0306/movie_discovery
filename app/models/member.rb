@@ -47,8 +47,15 @@ class Member < ApplicationRecord
     self == current_member
   end
   
-  def followed_count
+  def following_count
     followed_members.count
   end
   
+  def followed_count
+    follower_members.count
+  end
+  
+  def posted_count
+    reviews.count
+  end
 end

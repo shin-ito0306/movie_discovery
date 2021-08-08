@@ -5,12 +5,13 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :name, presence: true, length: { maximum: 20 }
-  validates :withdrawal_status, inclusion: { in: [true, false] }
+  
   
   
   attachment :member_image
   
   has_many :likes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   
   #呼び出し元をフォローしている側,followed_id=>フォロ-されているMemeberのID,follower_id=>フォロ-をしているMemberのID
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy

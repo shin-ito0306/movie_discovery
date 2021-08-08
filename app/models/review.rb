@@ -23,7 +23,7 @@ class Review < ApplicationRecord
   end
   
   def written_by?(current_member)
-    self == current_member
+    member_id == current_member
   end
   
 end

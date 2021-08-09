@@ -1,0 +1,32 @@
+<table>
+  <tbody>
+    <tr>
+      <th class="day-of-week">日</th>
+      <th class="day-of-week">月</th>
+      <th class="day-of-week">火</th>
+      <th class="day-of-week">水</th>
+      <th class="day-of-week">木</th>
+      <th class="day-of-week">金</th>
+      <th class="day-of-week">土</th>
+    </tr>
+    <tr>
+    <% @calendar.each do |day| %>
+      <% if day.wday == 0 %>
+        <tr>
+      <% end %>
+        <td>
+          <% if day == @today %>
+            <span style="color: red;"><%= day.day %></span>
+          <% else %>
+            <%= day.day %>
+          <% end %>
+          <div class="back"></div>
+        </td>
+      <% if day.wday == 6 %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tr>
+  </tbody>
+  
+</table>

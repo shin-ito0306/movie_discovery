@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'notifications/index'
   get 'about' => 'homes#about'
   get 'unsubscribe' => 'homes#unsubscribe'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :members do
+    get 'calendar/index'
     get 'see_laters' => 'see_laters#index'
     resource :see_laters, only: [:create, :destroy]
     resource :relationships, only: [:create, :destroy]

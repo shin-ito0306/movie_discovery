@@ -1,0 +1,28 @@
+// Place all the styles related to the Calendar controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.day-of-week {
+  width: 325px;
+  color: #479384;
+  background-color: #ecf7f5;
+  border: 1px solid #b9b9b9;
+  padding: 6px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #b9b9b9;
+  font-size: 20px;
+  height: 60px;
+}
+
+.back {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  margin: 0 auto;
+}
+

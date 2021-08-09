@@ -1,3 +1,6 @@
+<%= link_to "前", member_calendar_index_path(@member, day_front: @today.prev_month) %>
+<%= link_to "次", member_calendar_index_path(@member, day_after: @today.next_month) %>
+<%= @today %>
 <table>
   <tbody>
     <tr>
@@ -20,7 +23,18 @@
           <% else %>
             <%= day.day %>
           <% end %>
-          <div class="back"></div>
+          <% if @member.review_count(day) == 0 %>
+            <div class="back0"></div>
+          <% elsif @member.review_count(day) == 1 %>
+            <div class="back1"></div>
+          <% elsif @member.review_count(day) == 2 %>
+            <div class="back2"></div>
+          <% elsif @member.review_count(day) == 3 %>
+            <div class="back3"></div>
+          <% elsif @member.review_count(day) == 4 %>
+            <div class="back4"></div>
+          <% end %>
+            
         </td>
       <% if day.wday == 6 %>
         </tr>

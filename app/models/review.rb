@@ -26,5 +26,13 @@ class Review < ApplicationRecord
     member_id == current_member
   end
   
+  #いいねの追加といいねの通知
+  def lake_by_current_member(current_member)
+    like = current_member.likes.new(review_id: id)
+    if like.save
+      create_notification_like(current_member, id, member_id)
+    end
+  end
+  
 end
 

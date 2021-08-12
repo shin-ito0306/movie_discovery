@@ -23,17 +23,7 @@
           <% else %>
             <%= day.day %>
           <% end %>
-          <% if member.review_count(day) == 0 %>
-            <div class="back0"></div>
-          <% elsif member.review_count(day) == 1 %>
-            <div class="back1"></div>
-          <% elsif member.review_count(day) == 2 %>
-            <div class="back2"></div>
-          <% elsif member.review_count(day) == 3 %>
-            <div class="back3"></div>
-          <% elsif member.review_count(day) == 4 %>
-            <div class="back4"></div>
-          <% end %>
+          <div class="back<%= member.review_count(day) %>"></div>
         </td>
       <% if day.wday == 6 %>
         </tr>

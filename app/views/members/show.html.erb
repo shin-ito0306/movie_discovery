@@ -43,6 +43,9 @@
   <li class="nav-item">
     <%= link_to "レビュー", member_path(@member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>
   </li>
+  <li class="nav-item">
+    <%= link_to "投稿記録", member_calendar_index_path(@member.id), class: 'nav-link border-bottom m-3 text-dark', remote: true %>
+  </li>
 </ul>
 
 <!--レビュー一覧-->
@@ -53,4 +56,9 @@
 <!--後で見る一覧-->
 <div id="see_laters_button">
 
+</div>
+
+<!--投稿記録-->
+<div id="review_record_button">
+  
 </div>

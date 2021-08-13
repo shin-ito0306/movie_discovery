@@ -11,17 +11,7 @@ class Review < ApplicationRecord
   end
   
   #いいね通知のメソッド
-  def create_notification_like(current_member, review, visited)
-    like_search = Notification.where(visiter_id: current_member.id, review_id: review, visited_id: visited, action: 'like')
-    if like_search.blank?
-      notification = current_member.passive_notifications.new(review_id: review, visited_id: visited, action: 'like')
-      if notification.visiter_id == notification.visited_id
-        notification.check = true
-      end
-      notification.save if notification.valid?
-    end
-  end
-  
+ 
   def written_by?(current_member)
     member_id == current_member
   end
@@ -33,6 +23,20 @@ class Review < ApplicationRecord
       create_notification_like(current_member, id, member_id)
     end
   end
+  
+  private 
+  
+  def create_notification_like(current_member, review, visited)
+    like_search = Notification.where(visiter_id: current_member.id, review_id: review, visited_id: visited, action: 'like')
+    if like_search.blank?
+      notification = current_member.passive_notifications.new(review_id: review, visited_id: visited, action: 'like')
+      if notification.visiter_id == notification.visited_id
+        notification.check = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+  
   
 end
 

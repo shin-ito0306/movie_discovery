@@ -58,4 +58,8 @@ class Member < ApplicationRecord
   def posted_count
     reviews.count
   end
+  
+  def review_count(day)
+    reviews.where('created_at like ?', "#{day}%").count
+  end
 end

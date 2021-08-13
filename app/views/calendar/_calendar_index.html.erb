@@ -1,0 +1,45 @@
+<h2 class="text-center mt-5">投稿記録</h2>
+<div class="container my-5">
+<%= link_to "<<prev", member_calendar_index_path(member, date: current_month.prev_month), remote: true %>
+<span style="font-size: 25px;"><%= current_month.month %>月</span>
+<%= link_to "next>>", member_calendar_index_path(member, date: current_month.next_month), remote: true %>
+
+<table>
+  <tbody>
+    <tr>
+      <th class="day-of-week">日</th>
+      <th class="day-of-week">月</th>
+      <th class="day-of-week">火</th>
+      <th class="day-of-week">水</th>
+      <th class="day-of-week">木</th>
+      <th class="day-of-week">金</th>
+      <th class="day-of-week">土</th>
+    </tr>
+    <tr>
+    <% calendar.each do |one_day| %>
+      <% if one_day.wday == 0 %>
+        <tr>
+      <% end %>
+        <td>
+          <% if one_day == Date.current %>
+            <span style="color: red;"><%= one_day.day %></span>
+          <% else %>
+            <%= one_day.day %>
+          <% end %>
+          <div class="back<%= member.review_count(one_day) %>"></div>
+        </td>
+      <% if one_day.wday == 6 %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tr>
+  </tbody>
+  
+</table>
+<span class="back0" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">0回</span>
+<span class="back1" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">1回</span>
+<span class="back2" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">2回</span>
+<span class="back3" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">3回</span>
+<span class="back4" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">4回</span>
+
+</div>

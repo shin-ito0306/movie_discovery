@@ -3,6 +3,7 @@
 <%= link_to "<<prev", member_calendar_index_path(member, date: current_month.prev_month), remote: true %>
 <span style="font-size: 25px;"><%= current_month.month %>月</span>
 <%= link_to "next>>", member_calendar_index_path(member, date: current_month.next_month), remote: true %>
+
 <table>
   <tbody>
     <tr>
@@ -35,5 +36,10 @@
   </tbody>
   
 </table>
+<span class="back0" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">0回</span>
+<span class="back1" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">1回</span>
+<span class="back2" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">2回</span>
+<span class="back3" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">3回</span>
+<span class="back4" style="display: inline-block; margin-top: 2px;"></span><span style="vertical-align: top; margin-right: 20px;">4回</span>
 
 </div>

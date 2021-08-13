@@ -22,7 +22,7 @@ module CalendarHandler
  private
  
  def format_to_date(date)
-    splited_date = date.split("-").map { |b| b.to_i }
+    splited_date = date.split("-").map { |d| d.to_i }
     Date.new(splited_date[0], splited_date[1], splited_date[2])
  end
  

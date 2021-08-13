@@ -1,6 +1,8 @@
-<%= link_to "前", member_calendar_index_path(member, date: current_month.prev_month), remote: true %>
-<span><%= current_month.month %>月</span>
-<%= link_to "次", member_calendar_index_path(member, date: current_month.next_month), remote: true %>
+<h2 class="text-center mt-5">投稿記録</h2>
+<div class="container my-5">
+<%= link_to "<<prev", member_calendar_index_path(member, date: current_month.prev_month), remote: true %>
+<span style="font-size: 25px;"><%= current_month.month %>月</span>
+<%= link_to "next>>", member_calendar_index_path(member, date: current_month.next_month), remote: true %>
 <table>
   <tbody>
     <tr>
@@ -13,19 +15,19 @@
       <th class="day-of-week">土</th>
     </tr>
     <tr>
-    <% calendar.each do |day| %>
-      <% if day.wday == 0 %>
+    <% calendar.each do |one_day| %>
+      <% if one_day.wday == 0 %>
         <tr>
       <% end %>
         <td>
-          <% if day == Date.current %>
-            <span style="color: red;"><%= day.day %></span>
+          <% if one_day == Date.current %>
+            <span style="color: red;"><%= one_day.day %></span>
           <% else %>
-            <%= day.day %>
+            <%= one_day.day %>
           <% end %>
-          <div class="back<%= member.review_count(day) %>"></div>
+          <div class="back<%= member.review_count(one_day) %>"></div>
         </td>
-      <% if day.wday == 6 %>
+      <% if one_day.wday == 6 %>
         </tr>
       <% end %>
     <% end %>
@@ -33,3 +35,5 @@
   </tbody>
   
 </table>
+
+</div>

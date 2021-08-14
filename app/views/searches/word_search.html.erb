@@ -1,7 +1,7 @@
 <%= render 'movies/list', movies: @movies %>
 <div class="container my-4">
   <div class="row justify-content-center">
-    <% @pages.each do |page| %>
+    <% pagenation(@page, @movie_total_pages).each do |page| %>
       <% if @page == page %>
         <%= link_to "#{page}", searches_word_search_path(page_id: page, word_name: @word), :style=>"color:black;", class: "m-1" %>
       <% else %>

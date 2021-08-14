@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-4 px-0">
       <%= link_to movie_path(@review.movie_number) do %>
@@ -6,16 +6,14 @@
       <% end %>
     </div>
     <div class="col-4 bg-light card">
-      
       <div class="row mb-3 m-2 mt-4">
         <%= link_to member_path(@review.member.id) do %>
           <%= attachment_image_tag @review.member, :member_image, :fill, 10, 10, format: 'jpeg', fallback:"unnamed.png", size:'45x45', class: "rounded-circle" %>
           <%= @review.member.name %>
         <% end %>
         <div class="ml-auto mt-1">
-          <% if @review.written_by?(current_member) %>
+          <% if @review.written_by?(current_member.id) %>
             <%= link_to '編集', edit_review_path(@review.id), class: "btn btn-outline-success btn-sm" %>
-            
             <%= link_to '削除', review_path(@review.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-sm" %>
           <% end %>
         </div>
@@ -30,10 +28,7 @@
         </span>
       </div>
       
-        <%= @review.review_detail %>
-      
-      
-      
+      <%= @review.review_detail %>
     </div>
   </div>
 </div>

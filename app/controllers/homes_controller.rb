@@ -17,8 +17,7 @@ class HomesController < ApplicationController
   
   def withdrawal
     @member = Member.find(current_member.id)
-    @member.update(withdrawal_status: true)
-    reset_session
+    @member.destroy
     redirect_to root_path
   end
 end

@@ -11,6 +11,21 @@ class Review < ApplicationRecord
   end
   
   #いいね通知のメソッド
+ 
+  def written_by?(current_member)
+    member_id == current_member
+  end
+  
+  #いいねの追加といいねの通知
+  def lake_by_current_member(current_member)
+    like = current_member.likes.new(review_id: id)
+    if like.save
+      create_notification_like(current_member, id, member_id)
+    end
+  end
+  
+  private 
+  
   def create_notification_like(current_member, review, visited)
     like_search = Notification.where(visiter_id: current_member.id, review_id: review, visited_id: visited, action: 'like')
     if like_search.blank?
@@ -22,9 +37,6 @@ class Review < ApplicationRecord
     end
   end
   
-  def written_by?(current_member)
-    self == current_member
-  end
   
 end
 

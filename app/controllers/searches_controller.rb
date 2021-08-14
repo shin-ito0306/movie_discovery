@@ -21,17 +21,6 @@ class SearchesController < ApplicationController
     #ページネーション
     @movie_total_pages = Tmdb::Genre.movies(@genre).total_pages
     @page = params[:page_id].to_i
-    
-    if @movie_total_pages > 10
-      first = [1,  @page - 4].max
-      @first = [first, @movie_total_pages - 9].min
-      last  = [10, @page + 5].max
-      @last  = [last, @movie_total_pages].min
-      @pages = (@first..@last).each
-    else
-      @pages = [*1..@last]
-    end
-    
     if params[:page_id].to_i < 501 #検索した1ページ目はparams[:page_id]はnil(0), 2ページ目以降で使う
       @movies = Tmdb::Genre.movies(@genre, page: params[:page_id])
     else
@@ -44,15 +33,7 @@ class SearchesController < ApplicationController
     @movie_total_pages = Tmdb::Search.movie(@word).total_pages
     @page = params[:page_id].to_i
     
-    if @movie_total_pages > 10
-      first = [1,  @page - 4].max
-      @first = [first, @movie_total_pages - 9].min
-      last  = [10, @page + 5].max
-      @last  = [last, @movie_total_pages].min
-      @pages = (@first..@last).each
-    else
-      @pages = [*1..@movie_total_pages]
-    end
+    
     
     if @movie_total_pages > params[:page_id].to_i
       @movies = Tmdb::Search.movie(@word, page: params[:page_id])

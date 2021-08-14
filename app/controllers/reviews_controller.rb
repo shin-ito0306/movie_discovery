@@ -1,7 +1,5 @@
 class ReviewsController < ApplicationController
   
-  
-  
   def index
     #自分の投稿が表示されない
     @reviews = Review.where(member_id: current_member.followed_members)

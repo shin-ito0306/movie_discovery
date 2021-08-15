@@ -1,0 +1,7 @@
+<% pagenation(@page, @movie_total_pages).each do |page| %>
+  <% if @page == page %>
+    <%= link_to "#{page}", searches_genre_search_path(page_id: page, genre_name: @genre), :style=>"color:black;", class: "m-1" %>
+  <% else %>
+    <%= link_to "#{page}", searches_genre_search_path(page_id: page, genre_name: @genre), class: "m-1" %>
+  <% end %>
+<% end %>

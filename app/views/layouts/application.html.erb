@@ -67,7 +67,7 @@
         <div class="row">
           <div class="row ml-auto">
             <div class="col-12">
-              <div><%= f.select :kind, options_for_select([['検索の種類'], ['会員'], ['作品']]) %></div>
+              <div><%= f.select :kind, options_for_select([['会員'], ['作品']]), :prompt => "検索の種類" %></div>
               <div><%= f.select :genre, options_for_select(genre_search), :prompt => "ジャンルの選択" %></div>
             </div>
           </div>

@@ -6,11 +6,11 @@ class SearchesController < ApplicationController
       @members = Member.finder(params[:word])
     elsif params[:kind] == "作品" && params[:word] != nil
       redirect_to searches_word_search_path(word_name: params[:word])
-    elsif params[:kind] == "検索の種類" && params[:genre] != nil && params[:word] == ""
+    elsif params[:kind] == "" && params[:genre] != nil && params[:word] == ""
       redirect_to searches_genre_search_path(genre_name: params[:genre])
-    elsif params[:kind] == "検索の種類" && params[:word] != nil
+    elsif params[:kind] == "" && params[:word] != nil
       redirect_to searches_word_search_path(word_name: params[:word])
-    elsif params[:kind] == "検索の種類" && params[:genre] == "ジャンルの選択" && params[:word] == ""
+    elsif params[:kind] == "" && params[:genre] == "ジャンルの選択" && params[:word] == ""
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)

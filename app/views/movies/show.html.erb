@@ -14,11 +14,8 @@
   </div>
 </div>
 
-<% @movie['genres'].each do |a| %>
- <%= a['id'] %>
- <% end %>
- 
- <% @w %>
+<%= render 'list', movies: @recommend_movies %>
+
 <!--レビュー一覧-->
 <div class="container my-5">
   <h3>レビュー一覧</h3>

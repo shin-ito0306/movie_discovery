@@ -1,5 +1,5 @@
 <h2 class="text-center mt-5">作品一覧</h2>
-<%= render 'list', movies: @movies %>
+<%= render 'list', movies: @movies.results %>
 <div class="container my-4">
   <div class="row justify-content-center">
     <% pagenation(@page, @movie_total_pages).each do |page| %>

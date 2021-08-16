@@ -25,5 +25,10 @@ class MoviesController < ApplicationController
         end
       end
     end
+    
+    @recommend_movies = []
+    @y.each do |recommend_movie|
+      @recommend_movies << Tmdb::Movie.detail(recommend_movie[0])
+    end
   end
 end

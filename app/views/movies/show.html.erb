@@ -16,7 +16,7 @@
 
 <!--レビュー一覧-->
 <div class="container my-5">
-  <h3>レビュー一覧</h3>
+  <h2 class="text-center">レビュー一覧</h2>
   <div class="row m-5">
     <% @reviews.each do |review| %>
       <div class="col-4 my-4">
@@ -52,3 +52,5 @@
   </div>
 </div>
 
+<h2 class="text-center">他の類似作品</h2>
+<%= render 'list', movies: @recommend_movies %>

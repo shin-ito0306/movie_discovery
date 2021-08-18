@@ -9,7 +9,7 @@ module MovieHandler
         (1..movie_genres(movie).count).each do |i|
           if compare_movie[1].include?(movie_genres(movie)[i])
             matching_genres += 1
-            if k == movie_genres(movie).count && compare_movie[0] != movie['id']
+            if matching_genres == movie_genres(movie).count && compare_movie[0] != movie['id']
               chose_movies << compare_movie
             end
           end

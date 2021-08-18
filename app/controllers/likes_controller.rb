@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   
   def create
     @review = Review.find(params[:review_id])
-    @review.liked_by_current_member(current_member)
+    @review.like_by_current_member(current_member)
   end
   
   def destroy

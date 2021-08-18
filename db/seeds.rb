@@ -11,8 +11,8 @@ require 'themoviedb-api'
 Tmdb::Api.key(ENV['API_KEY'])
 Tmdb::Api.language("ja")
 
-ge = Tmdb::Genre.movie_list
-ge.each do |genre|
+genres = Tmdb::Genre.movie_list
+genres.each do |genre|
   Genre.create(genre_number: genre['id'], genre_name: genre['name'])
 end
 

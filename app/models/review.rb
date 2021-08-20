@@ -18,10 +18,13 @@ class Review < ApplicationRecord
   
   #いいねの追加といいねの通知
   def like_by_current_member(current_member)
-    like = current_member.likes.new(review_id: id)
-    if like.save
+    ActiveRecord::Base.transaction do
+      like = current_member.likes.new(review_id: id)
+      like.save!
       create_notification_like(current_member, id, member_id)
     end
+  rescue => e
+    p e.message
   end
   
   private 
@@ -33,7 +36,7 @@ class Review < ApplicationRecord
       if notification.visiter_id == notification.visited_id
         notification.check = true
       end
-      notification.save if notification.valid?
+      notification.save! if notification.valid?
     end
   end
   

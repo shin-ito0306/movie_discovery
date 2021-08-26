@@ -8,13 +8,6 @@
 <div class="container">
   <h1 class="border-bottom">おすすめ映画作品</h1>
   <div class="row mt-5">
-    <% @movies.each do |movie| %>
-    <div class="col-md-4 col-sm-12 text-center mb-4">
-      <%= link_to movie_path(movie['id']) do %>
-        <%= image_tag 'https://image.tmdb.org/t/p/w300' + "#{movie['poster_path']}", size: "300x450", class: "rounded" %><br>
-        <%= movie['title'] %>
-      <% end %>
-    </div>
-    <% end %>
+    <%= render 'movies/list', movies: @movies %>
   </div>
 </div>

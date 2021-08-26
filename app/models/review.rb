@@ -10,8 +10,6 @@ class Review < ApplicationRecord
     likes.where(member_id: member).exists?
   end
   
-  #いいね通知のメソッド
- 
   def written_by?(current_member)
     member_id == current_member
   end

@@ -17,6 +17,6 @@ class SeeLatersController < ApplicationController
   def destroy
     @see = SeeLater.find_by(movie_number: params[:movie_number], member_id: current_member.id)
     @see.destroy
-    redirect_to member_see_laters_path
+    redirect_to member_path(current_member)
   end
 end

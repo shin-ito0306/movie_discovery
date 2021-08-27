@@ -1,7 +1,6 @@
 class Notification < ApplicationRecord
-  belongs_to :visiter, class_name: 'Member', optional: true
-  belongs_to :visited, class_name: 'Member', optional: true
-  belongs_to :review, optional: true
+  belongs_to :visiter, class_name: 'Member'
+  belongs_to :visited, class_name: 'Member'
   
   validates :action, presence: true
   validates :check, inclusion: { in: [true, false] }

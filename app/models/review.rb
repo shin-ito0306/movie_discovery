@@ -15,27 +15,23 @@ class Review < ApplicationRecord
   end
   
   #いいねの追加といいねの通知
-  def like_by_current_member!(current_member)
-    ActiveRecord::Base.transaction do
-      like = current_member.likes.new(review_id: id)
-      like.save!
-      create_notification_like!(current_member, id, member_id)
+  def like_by_current_member(current_member)
+    like = current_member.likes.new(review_id: id)
+    if like.save
+      create_notification_like(current_member, id, member_id)
     end
-  rescue => e
-    p e.message
-
   end
   
   private 
   
-  def create_notification_like!(current_member, review, visited)
+  def create_notification_like(current_member, review, visited)
     like_search = Notification.where(visiter_id: current_member.id, review_id: review, visited_id: visited, action: 'like')
     if like_search.blank?
       notification = current_member.passive_notifications.new(review_id: review, visited_id: visited, action: 'like')
       if notification.visiter_id == notification.visited_id
         notification.check = true
       end
-      notification.save!
+      notification.save if notification.valid?
     end
   end
   

@@ -35,6 +35,7 @@ class SearchesController < ApplicationController
     if @movie_total_pages > params[:page_id].to_i
       @movies = Tmdb::Search.movie(@word, page: params[:page_id])
     else
+      flash[:alert] = "ページ数の上限が超えています"
       redirect_back(fallback_location: movies_path)
     end
   end

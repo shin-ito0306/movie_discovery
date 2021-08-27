@@ -1,19 +1,15 @@
 class SearchesController < ApplicationController
   def search
-    @kind = params[:kind]
-    @genre = params[:genre]
     if params[:kind] == "会員" && params[:word] != nil
       @members = Member.finder(params[:word])
-    elsif params[:kind] == "作品" && params[:word] != nil
+    elsif params[:kind] == "作品" && params[:word].present?
       redirect_to searches_word_search_path(word_name: params[:word])
-    elsif params[:kind] == "" && params[:genre] != nil && params[:word] == ""
+    elsif params[:kind].empty? && params[:genre].present? && params[:word].empty?
       redirect_to searches_genre_search_path(genre_name: params[:genre])
-    elsif params[:kind] == "" && params[:word] != nil
+    elsif params[:kind].empty? && params[:word].present?
       redirect_to searches_word_search_path(word_name: params[:word])
-    elsif params[:kind] == "" && params[:genre] == "ジャンルの選択" && params[:word] == ""
-      redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: movies_path)
     end
   end
   
@@ -26,7 +22,8 @@ class SearchesController < ApplicationController
     if params[:page_id].to_i < 501 #検索した1ページ目はparams[:page_id]はnil(0), 2ページ目以降で使う
       @movies = Tmdb::Genre.movies(@genre, page: params[:page_id])
     else
-      redirect_back(fallback_location: root_path)
+      flash[:alert] = "ページ数の上限が超えています"
+      redirect_back(fallback_location: movies_path)
     end
   end
   
@@ -38,7 +35,7 @@ class SearchesController < ApplicationController
     if @movie_total_pages > params[:page_id].to_i
       @movies = Tmdb::Search.movie(@word, page: params[:page_id])
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: movies_path)
     end
   end
   

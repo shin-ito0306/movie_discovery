@@ -1,4 +1,4 @@
-<% if review.likes.where(member_id: current_member.id).exists? %>
+<% if review.liked_by?(current_member.id) %>
   <%= link_to review_likes_path(review_id: review.id), method: :delete, remote:true do %>
     <i class="fas fa-heart" style="color: red;"></i><%= review.likes.count %>
   <% end %>

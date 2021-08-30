@@ -7,7 +7,9 @@
         <%= image_tag 'https://image.tmdb.org/t/p/w300' + see_later.movie_image, size: "300x450", class: "rounded" %><br>
       <% end %>
       <%= see_later.movie_name %><br>
-      <%= link_to '削除', member_see_laters_path(member_id: current_member.id, movie_number: see_later.movie_number), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+      <% if see_later.member == current_member %>
+        <%= link_to '削除', member_see_laters_path(member_id: current_member.id, movie_number: see_later.movie_number), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+      <% end %>
     </div>
   <% end %>
   </div>

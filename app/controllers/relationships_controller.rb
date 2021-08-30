@@ -7,9 +7,9 @@ class RelationshipsController < ApplicationController
   end
   
   def destroy
+    @member = Member.find_by(id: params[:member_id])
     @member_followed = current_member.relationships.find_by(followed_id: params[:member_id])
     @member_followed.destroy
-    redirect_back(fallback_location: root_path)
   end
   
   #呼び出し元がフォローしている側
